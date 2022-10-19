@@ -65,19 +65,25 @@ public class MainGame extends javax.swing.JFrame {
 
         NumClickLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumClickLabel.setText("Number of Clicks:");
+        NumClickLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         NumCorrMatchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumCorrMatchLabel.setText("Number of Correct Matches:");
+        NumCorrMatchLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         NumIncorrMatchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumIncorrMatchLabel.setText("Number of Incorrect Matches:");
+        NumIncorrMatchLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("1");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("4");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("5");
 
