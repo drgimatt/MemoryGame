@@ -30,14 +30,16 @@ public class MainGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        MainGame = new javax.swing.JPanel();
+        Stats = new javax.swing.JPanel();
         NumClickLabel = new javax.swing.JLabel();
         NumCorrMatchLabel = new javax.swing.JLabel();
         NumIncorrMatchLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        NumClickLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
         NewGame = new javax.swing.JMenuItem();
@@ -49,17 +51,17 @@ public class MainGame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 0, 102));
-        jPanel1.setForeground(new java.awt.Color(255, 102, 102));
+        MainGame.setBackground(new java.awt.Color(153, 0, 102));
+        MainGame.setForeground(new java.awt.Color(255, 102, 102));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout MainGameLayout = new javax.swing.GroupLayout(MainGame);
+        MainGame.setLayout(MainGameLayout);
+        MainGameLayout.setHorizontalGroup(
+            MainGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 309, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        MainGameLayout.setVerticalGroup(
+            MainGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -87,28 +89,51 @@ public class MainGame extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("5");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(NumIncorrMatchLabel)
-                    .addComponent(NumCorrMatchLabel)
-                    .addComponent(NumClickLabel)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+        NumClickLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NumClickLabel1.setText("Elapsed Time:");
+        NumClickLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("5:30");
+
+        javax.swing.GroupLayout StatsLayout = new javax.swing.GroupLayout(Stats);
+        Stats.setLayout(StatsLayout);
+        StatsLayout.setHorizontalGroup(
+            StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(StatsLayout.createSequentialGroup()
+                .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(StatsLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(NumCorrMatchLabel)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumIncorrMatchLabel)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(StatsLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(NumClickLabel1)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(NumClickLabel)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        StatsLayout.setVerticalGroup(
+            StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(StatsLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(NumClickLabel)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(StatsLayout.createSequentialGroup()
+                        .addComponent(NumClickLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(StatsLayout.createSequentialGroup()
+                        .addComponent(NumClickLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(NumCorrMatchLabel)
                 .addGap(18, 18, 18)
@@ -117,7 +142,7 @@ public class MainGame extends javax.swing.JFrame {
                 .addComponent(NumIncorrMatchLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         Game.setText("Game");
@@ -131,6 +156,11 @@ public class MainGame extends javax.swing.JFrame {
         Game.add(NewGame);
 
         Options.setText("Options");
+        Options.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OptionsActionPerformed(evt);
+            }
+        });
         Game.add(Options);
 
         Quit.setText("Quit");
@@ -146,6 +176,11 @@ public class MainGame extends javax.swing.JFrame {
         Help.setText("Help");
 
         Instruction.setText("Instructions");
+        Instruction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InstructionActionPerformed(evt);
+            }
+        });
         Help.add(Instruction);
 
         About.setText("About");
@@ -165,14 +200,14 @@ public class MainGame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MainGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Stats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Stats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,6 +226,18 @@ public class MainGame extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_AboutActionPerformed
+
+    private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
+        // TODO add your handling code here:
+        Frame5 options = new Frame5();
+        options.show();
+    }//GEN-LAST:event_OptionsActionPerformed
+
+    private void InstructionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionActionPerformed
+        // TODO add your handling code here:
+        instruction help = new instruction();
+        help.show();
+    }//GEN-LAST:event_InstructionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,17 +286,19 @@ public class MainGame extends javax.swing.JFrame {
     private javax.swing.JMenu Game;
     private javax.swing.JMenu Help;
     private javax.swing.JMenuItem Instruction;
+    private javax.swing.JPanel MainGame;
     private javax.swing.JMenuItem NewGame;
     private javax.swing.JLabel NumClickLabel;
+    private javax.swing.JLabel NumClickLabel1;
     private javax.swing.JLabel NumCorrMatchLabel;
     private javax.swing.JLabel NumIncorrMatchLabel;
     private javax.swing.JMenuItem Options;
     private javax.swing.JMenuItem Quit;
+    private javax.swing.JPanel Stats;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
