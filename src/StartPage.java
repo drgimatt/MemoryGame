@@ -68,7 +68,7 @@ public class StartPage extends javax.swing.JFrame {
         getContentPane().add(easy, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 80, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startBG.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
         Game.setText("Game");
 
