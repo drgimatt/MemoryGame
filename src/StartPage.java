@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -25,21 +28,108 @@ public class StartPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        difficult = new javax.swing.JButton();
+        medium = new javax.swing.JButton();
+        easy = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        Game = new javax.swing.JMenu();
+        NewGame = new javax.swing.JMenuItem();
+        Options = new javax.swing.JMenuItem();
+        Quit = new javax.swing.JMenuItem();
+        Help = new javax.swing.JMenu();
+        Instruction = new javax.swing.JMenuItem();
+        About = new javax.swing.JMenuItem();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        difficult.setBackground(new java.awt.Color(204, 0, 102));
+        difficult.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        difficult.setForeground(new java.awt.Color(255, 102, 153));
+        difficult.setText("DIFFICULT");
+        getContentPane().add(difficult, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 110, 40));
+
+        medium.setBackground(new java.awt.Color(255, 153, 0));
+        medium.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        medium.setForeground(new java.awt.Color(128, 59, 9));
+        medium.setText("MEDIUM");
+        getContentPane().add(medium, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 90, 40));
+
+        easy.setBackground(new java.awt.Color(0, 255, 153));
+        easy.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        easy.setForeground(new java.awt.Color(0, 51, 51));
+        easy.setText("EASY");
+        easy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyActionPerformed(evt);
+            }
+        });
+        getContentPane().add(easy, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 80, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startBG.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Game.setText("Game");
+
+        NewGame.setText("New Game");
+        NewGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewGameActionPerformed(evt);
+            }
+        });
+        Game.add(NewGame);
+
+        Options.setText("Options");
+        Game.add(Options);
+
+        Quit.setText("Quit");
+        Quit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitActionPerformed(evt);
+            }
+        });
+        Game.add(Quit);
+
+        jMenuBar1.add(Game);
+
+        Help.setText("Help");
+
+        Instruction.setText("Instructions");
+        Help.add(Instruction);
+
+        About.setText("About");
+        About.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AboutActionPerformed(evt);
+            }
+        });
+        Help.add(About);
+
+        jMenuBar1.add(Help);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewGameActionPerformed
+
+    private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_QuitActionPerformed
+
+    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_AboutActionPerformed
+
+    private void easyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_easyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +167,17 @@ public class StartPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem About;
+    private javax.swing.JMenu Game;
+    private javax.swing.JMenu Help;
+    private javax.swing.JMenuItem Instruction;
+    private javax.swing.JMenuItem NewGame;
+    private javax.swing.JMenuItem Options;
+    private javax.swing.JMenuItem Quit;
+    private javax.swing.JButton difficult;
+    private javax.swing.JButton easy;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton medium;
     // End of variables declaration//GEN-END:variables
 }
