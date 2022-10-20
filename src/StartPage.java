@@ -46,7 +46,7 @@ public class StartPage extends javax.swing.JFrame {
 
         difficult.setBackground(new java.awt.Color(204, 0, 102));
         difficult.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
-        difficult.setForeground(new java.awt.Color(255, 102, 153));
+        difficult.setForeground(new java.awt.Color(255, 204, 204));
         difficult.setText("DIFFICULT");
         getContentPane().add(difficult, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 110, 40));
 
