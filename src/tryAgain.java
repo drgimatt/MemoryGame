@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Images;
+
 
 /**
  *
@@ -33,10 +33,10 @@ public class tryAgain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        start.setBackground(new java.awt.Color(0, 255, 153));
+        start.setBackground(new java.awt.Color(204, 204, 255));
         start.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         start.setForeground(new java.awt.Color(0, 51, 51));
-        start.setText("Play Again");
+        start.setText("Exit");
         start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startActionPerformed(evt);
