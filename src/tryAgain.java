@@ -26,34 +26,34 @@ public class tryAgain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        start = new javax.swing.JButton();
-        start1 = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        playAgain = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        start.setBackground(new java.awt.Color(204, 204, 255));
-        start.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
-        start.setForeground(new java.awt.Color(0, 51, 51));
-        start.setText("Exit");
-        start.addActionListener(new java.awt.event.ActionListener() {
+        exit.setBackground(new java.awt.Color(204, 204, 255));
+        exit.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        exit.setForeground(new java.awt.Color(0, 51, 51));
+        exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startActionPerformed(evt);
+                exitActionPerformed(evt);
             }
         });
-        getContentPane().add(start, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 120, 40));
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 120, 40));
 
-        start1.setBackground(new java.awt.Color(0, 255, 153));
-        start1.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
-        start1.setForeground(new java.awt.Color(0, 51, 51));
-        start1.setText("Play Again");
-        start1.addActionListener(new java.awt.event.ActionListener() {
+        playAgain.setBackground(new java.awt.Color(0, 255, 153));
+        playAgain.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        playAgain.setForeground(new java.awt.Color(0, 51, 51));
+        playAgain.setText("Play Again");
+        playAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                start1ActionPerformed(evt);
+                playAgainActionPerformed(evt);
             }
         });
-        getContentPane().add(start1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 120, 40));
+        getContentPane().add(playAgain, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 120, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tryAgain.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -61,16 +61,18 @@ public class tryAgain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-        OptionsPage options = new OptionsPage();
-        options.show();
+        System.exit(0);
         dispose();
-    }//GEN-LAST:event_startActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
 
-    private void start1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_start1ActionPerformed
+    private void playAgainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAgainActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_start1ActionPerformed
+        OptionsPage opt= new OptionsPage();
+        opt.show();
+        dispose();
+    }//GEN-LAST:event_playAgainActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,8 +110,8 @@ public class tryAgain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton start;
-    private javax.swing.JButton start1;
+    private javax.swing.JButton playAgain;
     // End of variables declaration//GEN-END:variables
 }

@@ -160,7 +160,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         jLabel3 = new javax.swing.JLabel();
         NumClickLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        start = new javax.swing.JButton();
+        endGame = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
         NewGame = new javax.swing.JMenuItem();
@@ -207,13 +207,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("5:30");
 
-        start.setBackground(new java.awt.Color(0, 255, 153));
-        start.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
-        start.setForeground(new java.awt.Color(0, 51, 51));
-        start.setText("END GAME");
-        start.addActionListener(new java.awt.event.ActionListener() {
+        endGame.setBackground(new java.awt.Color(204, 204, 255));
+        endGame.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        endGame.setForeground(new java.awt.Color(0, 51, 51));
+        endGame.setText("END GAME");
+        endGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startActionPerformed(evt);
+                endGameActionPerformed(evt);
             }
         });
 
@@ -230,7 +230,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(NumIncorrMatchLabel)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(endGame, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(StatsLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -264,7 +264,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(endGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -339,21 +339,22 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 
     private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Bauson", "About", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_AboutActionPerformed
 
     private void InstructionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionActionPerformed
         // TODO add your handling code here:
         InstPage help = new InstPage();
         help.show();
+        dispose();
     }//GEN-LAST:event_InstructionActionPerformed
 
-    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+    private void endGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endGameActionPerformed
         // TODO add your handling code here:
-        OptionsPage options = new OptionsPage();
-        options.show();
+        tryAgain tryAgain= new tryAgain();
+        tryAgain.show();
         dispose();
-    }//GEN-LAST:event_startActionPerformed
+    }//GEN-LAST:event_endGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,12 +411,12 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JLabel NumIncorrMatchLabel;
     private javax.swing.JMenuItem Quit;
     private javax.swing.JPanel Stats;
+    private javax.swing.JButton endGame;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 
     @Override

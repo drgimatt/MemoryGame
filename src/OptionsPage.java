@@ -198,14 +198,17 @@ public class OptionsPage extends javax.swing.JFrame {
         MainGame easy = new MainGame();
         easy.show();
         easy.difficultySelect("easy");
+        dispose();
      }else if(diff=="ave"){
         MainGame ave = new MainGame();
         ave.show();
         ave.difficultySelect("average");
+        dispose();
      }else if(diff=="hard"){
         MainGame hard = new MainGame();
         hard.show();
         hard.difficultySelect("difficult");
+        dispose();
      }
     }//GEN-LAST:event_okActionPerformed
 
@@ -213,6 +216,7 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         StartPage start= new StartPage();
         start.show();
+        dispose();
     }//GEN-LAST:event_exit1ActionPerformed
 
     private void EasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EasyActionPerformed
