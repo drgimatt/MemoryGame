@@ -218,7 +218,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     }
     
     public void playerWon(){
-        System.exit(0);
+        JOptionPane.showMessageDialog(null,"Congratulations. You won!","WINNER",JOptionPane.PLAIN_MESSAGE);
+        //System.exit(0);
     }
     
     public MainGame() {
