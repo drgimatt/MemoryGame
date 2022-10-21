@@ -30,22 +30,23 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     int tiles = 0;
     int totalTiles = 0;
     int length = 0;
-    int firstSelected = 30;
-    int secondSelected = 30;
+    int firstSelected = 40;
+    int secondSelected = 40;
     int correctTiles = 0;
     int incorrectTiles = 0;
     int tries = 0;
     private boolean purgatory = false;
     boolean tilesAreText = false;
     boolean showTilesInitial = true;
+    Color standard = new Color(220, 220, 220);
     Random randomGenerator = new Random();
     JButton btn[] = new JButton[50];
     String[] board;
     Color[] Colorboard;
     Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
-    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};//easier version
-    String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²"}; //math equations
-    String ans [] = new String[25];
+    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
+    String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
+    String ans [] = new String[40];
     
     public void difficultySelect(String difficulty){
         if(difficulty == "easy"){
@@ -60,28 +61,39 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
             
     }
     
+    public void initializeStats(){
+        firstSelected = 40;
+        secondSelected = 40;
+        correctTiles = 0;
+        incorrectTiles = 0;
+        tries = 0;
+        purgatory = false;
+        showTilesInitial = true; 
+    }
+    
     public void setUpGameColor(){
+        initializeStats();
+        tilesAreText = false;
         ans = symbols;
         tiles = 4;
         length = 8;
-        showTilesInitial = true;
+
         MainGame.setLayout(new GridLayout(4,4,2,2));
         Color ans [] = new Color[14];
         totalTiles = (int) Math.pow(tiles, 2);
         Color Colorboard [] = new Color [totalTiles];
         for(int i=0;i<totalTiles;i++){
 			btn[i] = new JButton("");
-                        btn[i].setBackground(new Color(220, 220, 220)); 
+                        btn[i].setBackground(standard); 
        			btn[i].setEnabled(true);
+                        btn[i].addMouseListener(this);
 			MainGame.add(btn[i]);
 		
 		}
-
         
         for (int i = 0; i < length; i++){
             ans[i] = color[i];
         }
-        
 
         for(int i=0;i<length;i++){
             for(int z=0;z<2;z++){
@@ -89,18 +101,19 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 			int y = randomGenerator.nextInt(length*2);
 			if(Colorboard[y]==null){
 			btn[y].setBackground(ans[i]);
-			Colorboard[y]=ans[i];
+                        Colorboard[y]=ans[i];
+                        System.out.println(Colorboard[y].toString());
 			break;
 			}
 		}
-            }
-				
-			
+            }		
 	}
 }
     
     public void setUpGameText(String flag){
-          
+        initializeStats();    
+        tilesAreText = true;
+        
         if(flag == "average") {
             ans = symbols;
             tiles = 4;
@@ -114,15 +127,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
             MainGame.setLayout(new GridLayout(6,6,2,2));
         }
 
-        showTilesInitial = true;
-        tilesAreText = true;
         totalTiles = (int) Math.pow(tiles, 2);
-        //System.out.println(flag);
-        //System.out.println(totalTiles);
         board = new String [totalTiles];
         for(int i=0;i<(totalTiles);i++){
 			btn[i] = new JButton("");
-			btn[i].setBackground(new Color(220, 220, 220));
+			btn[i].setBackground(standard);
                         btn[i].setForeground(Color.black);
 			btn[i].setEnabled(true);
                         btn[i].addMouseListener(this);
@@ -141,8 +150,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 			}
 		}
             }
-				
-			
+					
 	}
 }    
 
@@ -171,10 +179,21 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     public void showSpecificTileColor(int i){
         btn[i].setBackground(Colorboard[i]);
     }
+
+    public void flipTileColor(int i){
+        if(Colorboard[i] != Colorboard[firstSelected]){
+            if(btn[i].getBackground()== standard){
+                showSpecificTileColor(i);
+            }
+            else{
+                btn[i].setBackground(standard);
+            }
+        }
+    }
     
     public void hideAllTileColor(){
         for(int i=0; i<totalTiles; i++){
-           btn[i].setBackground(new Color(220, 220, 220));
+           btn[i].setBackground(standard);
         }
     }
     
@@ -182,12 +201,22 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         for(int i=0; i<totalTiles; i++){
             if (board[i] != "matched"){
             return false;
-        }
-            
+            } 
         }
         playerWon();
         return true;
     }
+
+    public boolean checkWinColor(){
+        for(int i=0; i<totalTiles; i++){
+            if (Colorboard[i] != Colorboard[firstSelected]){
+            return false;
+            } 
+        }
+        playerWon();
+        return true;
+    }
+    
     public void playerWon(){
         System.exit(0);
     }
@@ -231,7 +260,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         MainGame.setBackground(new java.awt.Color(153, 0, 102));
         MainGame.setForeground(new java.awt.Color(255, 102, 102));
         MainGame.setLayout(new java.awt.GridLayout(5, 5));
-        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 429, 425));
+        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 510));
 
         NumClickLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumClickLabel.setText("Number of Clicks:");
@@ -326,7 +355,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        getContentPane().add(Stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 0, -1, 425));
+        getContentPane().add(Stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, 425));
 
         Game.setText("Game");
 
@@ -503,6 +532,30 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                                 
                             }
                             
+                    }
+                }
+                else{
+                    if(showTilesInitial == true){
+                        hideAllTileColor();
+                    }
+                    else{
+                        flipTileColor(i);
+                        if(firstSelected >= totalTiles){
+                            firstSelected = i;
+                        }
+                            if((Colorboard[firstSelected] != Colorboard[i]) || (firstSelected == i)){
+                                secondSelected = i;
+                                purgatory = true;
+                                incorrectTiles++;
+                                tries++;
+                            }
+                            else{
+                                board[i]=board[firstSelected];
+                                correctTiles++;
+                                tries++;
+                                checkWinColor();
+                                firstSelected = totalTiles;
+                            }                        
                     }
                 }
             }
