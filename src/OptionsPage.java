@@ -19,7 +19,7 @@ public class OptionsPage extends javax.swing.JFrame {
      * Creates new form StartPage
      */
     
-    String diff, easy, ave, hard;
+    String diff = "easy";
     
     public OptionsPage() {
         initComponents();
@@ -64,6 +64,7 @@ public class OptionsPage extends javax.swing.JFrame {
         btGrpRestrict.add(MovementFree);
         MovementFree.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementFree.setForeground(new java.awt.Color(255, 255, 255));
+        MovementFree.setSelected(true);
         MovementFree.setText("No");
         getContentPane().add(MovementFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 51, -1));
 
@@ -83,6 +84,7 @@ public class OptionsPage extends javax.swing.JFrame {
         difficulty.add(Easy);
         Easy.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Easy.setForeground(new java.awt.Color(255, 255, 255));
+        Easy.setSelected(true);
         Easy.setText("Easy");
         Easy.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -191,15 +193,16 @@ public class OptionsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_BombTilesEnableActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
-     if(diff.equals(easy)){
+        
+        if(diff=="easy"){
         MainGame easy = new MainGame();
         easy.show();
         easy.difficultySelect("easy");
-     }else if(diff.equals(ave)){
+     }else if(diff=="ave"){
         MainGame ave = new MainGame();
         ave.show();
         ave.difficultySelect("average");
-     }else if(diff.equals(hard)){
+     }else if(diff=="hard"){
         MainGame hard = new MainGame();
         hard.show();
         hard.difficultySelect("difficult");
@@ -218,35 +221,23 @@ public class OptionsPage extends javax.swing.JFrame {
 
     private void EasyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EasyItemStateChanged
         // TODO add your handling code here:         
-        diff= easy;
+        diff= "easy";
     }//GEN-LAST:event_EasyItemStateChanged
 
     private void AverageItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AverageItemStateChanged
         // TODO add your handling code here:
-        diff= ave;      
+        diff= "ave";      
     }//GEN-LAST:event_AverageItemStateChanged
 
     private void DifficultItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DifficultItemStateChanged
         // TODO add your handling code here:
-        diff= hard;
+        diff= "hard";
  
     }//GEN-LAST:event_DifficultItemStateChanged
 
     private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
         // TODO add your handling code here:
-        if(diff==easy){
-        MainGame easy = new MainGame();
-        easy.show();
-        easy.difficultySelect("easy");
-     }else if(diff==ave){
-        MainGame ave = new MainGame();
-        ave.show();
-        ave.difficultySelect("average");
-     }else if(diff==hard){
-        MainGame hard = new MainGame();
-        hard.show();
-        hard.difficultySelect("difficult");
-     }
+
     }//GEN-LAST:event_okMouseClicked
     
     
