@@ -30,6 +30,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     int tiles = 0;
     int totalTiles = 0;
     int length = 0;
+    int firstSelected = 30;
+    int secondSelected = 30;
+    int correctTiles = 0;
+    int incorrectTiles = 0;
+    int tries = 0;
+    private boolean purgatory = false;
+    boolean tilesAreText = false;
+    boolean showTilesInitial = true;
     Random randomGenerator = new Random();
     JButton btn[] = new JButton[50];
     String[] board;
@@ -56,6 +64,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         ans = symbols;
         tiles = 4;
         length = 8;
+        showTilesInitial = true;
         MainGame.setLayout(new GridLayout(4,4,2,2));
         Color ans [] = new Color[14];
         totalTiles = (int) Math.pow(tiles, 2);
@@ -105,10 +114,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
             MainGame.setLayout(new GridLayout(6,6,2,2));
         }
 
-        
+        showTilesInitial = true;
+        tilesAreText = true;
         totalTiles = (int) Math.pow(tiles, 2);
-        System.out.println(flag);
-        System.out.println(totalTiles);
+        //System.out.println(flag);
+        //System.out.println(totalTiles);
         board = new String [totalTiles];
         for(int i=0;i<(totalTiles);i++){
 			btn[i] = new JButton("");
@@ -140,30 +150,48 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         btn[i].setText(board[i]);
     }
     
-    public void hideAllTileText (int i){
-        for(i=0; i<totalTiles; i++){
-           btn[i].setBackground(new Color(220, 220, 220));
+    public void flipTileText(int i){
+        if(board[i] != "matched"){
+            if(btn[i].getText()==""){
+                showSpecificTileText(i);
+            }
+            else{
+                btn[i].setText("");
+            }
         }
     }
     
+    public void hideAllTileText(){
+        for(int i=0; i<totalTiles; i++){
+           btn[i].setText("");
+           showTilesInitial = false;
+        }
+    }    
+
     public void showSpecificTileColor(int i){
         btn[i].setBackground(Colorboard[i]);
     }
     
-    public void hideAllTileColor(int i){
-        for(i=0; i<totalTiles; i++){
-           btn[i].setText("");
+    public void hideAllTileColor(){
+        for(int i=0; i<totalTiles; i++){
+           btn[i].setBackground(new Color(220, 220, 220));
         }
     }
     
     public boolean checkWinText(){
         for(int i=0; i<totalTiles; i++){
-            if (board[i] != "done"){
+            if (board[i] != "matched"){
             return false;
         }
+            
         }
+        playerWon();
         return true;
     }
+    public void playerWon(){
+        System.exit(0);
+    }
+    
     public MainGame() {
         initComponents();
         //difficultySelect("difficult");
@@ -183,11 +211,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         NumClickLabel = new javax.swing.JLabel();
         NumCorrMatchLabel = new javax.swing.JLabel();
         NumIncorrMatchLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        NumClickLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        NumCorrMatch = new javax.swing.JLabel();
+        NumIncorrMatch = new javax.swing.JLabel();
+        NumClick = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
+        Time = new javax.swing.JLabel();
         endGame = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
@@ -198,10 +226,12 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         About = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MainGame.setBackground(new java.awt.Color(153, 0, 102));
         MainGame.setForeground(new java.awt.Color(255, 102, 102));
         MainGame.setLayout(new java.awt.GridLayout(5, 5));
+        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 429, 425));
 
         NumClickLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumClickLabel.setText("Number of Clicks:");
@@ -215,25 +245,25 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         NumIncorrMatchLabel.setText("Number of Incorrect Matches:");
         NumIncorrMatchLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("1");
+        NumCorrMatch.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        NumCorrMatch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NumCorrMatch.setText("0");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("4");
+        NumIncorrMatch.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        NumIncorrMatch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NumIncorrMatch.setText("0");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("5");
+        NumClick.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        NumClick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NumClick.setText("0");
 
-        NumClickLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NumClickLabel1.setText("Elapsed Time:");
-        NumClickLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TimeLabel.setText("Elapsed Time:");
+        TimeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("5:30");
+        Time.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Time.setText("0");
 
         endGame.setBackground(new java.awt.Color(204, 204, 255));
         endGame.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
@@ -255,19 +285,19 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                         .addGap(36, 36, 36)
                         .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(NumCorrMatchLabel)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumCorrMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(NumIncorrMatchLabel)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumIncorrMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(endGame, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(StatsLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(NumClickLabel1)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TimeLabel)
+                            .addComponent(Time, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(NumClickLabel)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(NumClick, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         StatsLayout.setVerticalGroup(
@@ -278,23 +308,25 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                     .addGroup(StatsLayout.createSequentialGroup()
                         .addComponent(NumClickLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NumClick, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(StatsLayout.createSequentialGroup()
-                        .addComponent(NumClickLabel1)
+                        .addComponent(TimeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Time, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(NumCorrMatchLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NumCorrMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(NumIncorrMatchLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NumIncorrMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(endGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
+
+        getContentPane().add(Stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 0, -1, 425));
 
         Game.setText("Game");
 
@@ -337,21 +369,6 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         jMenuBar1.add(Help);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(MainGame, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Stats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Stats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(MainGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -433,28 +450,66 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JMenuItem Instruction;
     private javax.swing.JPanel MainGame;
     private javax.swing.JMenuItem NewGame;
+    private javax.swing.JLabel NumClick;
     private javax.swing.JLabel NumClickLabel;
-    private javax.swing.JLabel NumClickLabel1;
+    private javax.swing.JLabel NumCorrMatch;
     private javax.swing.JLabel NumCorrMatchLabel;
+    private javax.swing.JLabel NumIncorrMatch;
     private javax.swing.JLabel NumIncorrMatchLabel;
     private javax.swing.JMenuItem Quit;
     private javax.swing.JPanel Stats;
+    private javax.swing.JLabel Time;
+    private javax.swing.JLabel TimeLabel;
     private javax.swing.JButton endGame;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void mouseClicked(MouseEvent e) {
     Object source = e.getSource();
+            if(purgatory){
+                flipTileText(secondSelected);
+                flipTileText(firstSelected);
+                firstSelected = totalTiles;
+                secondSelected = 30;
+                purgatory = false;
+            }
             for (int i = 0; i < totalTiles; i++){
             if (source == btn[i]){
-                System.out.println(btn[i].getText());
+                if (tilesAreText == true){
+                    if(showTilesInitial == true){
+                        hideAllTileText();
+                    }
+                    else{
+                        flipTileText(i);
+                        if(firstSelected >= totalTiles){
+                            firstSelected = i;
+                            }
+                            else{
+                                if((board[firstSelected] != board[i]) || (firstSelected == i)){
+                                    secondSelected = i;
+                                    purgatory = true;
+                                    incorrectTiles++;
+                                    tries++;
+                                }
+                                else{
+                                    board[i]="matched";
+                                    board[firstSelected] = "matched";
+                                    correctTiles++;
+                                    tries++;
+                                    checkWinText();
+                                    firstSelected = totalTiles;
+                                }
+                                
+                            }
+                            
+                    }
+                }
+            }
         }
-        }
+    NumCorrMatch.setText(Integer.toString(correctTiles));
+    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+    NumClick.setText(Integer.toString(tries));
     }
 
     @Override
