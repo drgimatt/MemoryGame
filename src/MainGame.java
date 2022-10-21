@@ -138,7 +138,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public MainGame() {
         initComponents();
-        difficultySelect("easy");
+        //difficultySelect("easy");
     }
 
     /**

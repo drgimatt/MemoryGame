@@ -1,5 +1,6 @@
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -17,9 +18,14 @@ public class OptionsPage extends javax.swing.JFrame {
     /**
      * Creates new form StartPage
      */
+    
+    String diff, easy, ave, hard;
+    
     public OptionsPage() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +45,7 @@ public class OptionsPage extends javax.swing.JFrame {
         Easy = new javax.swing.JRadioButton();
         Average = new javax.swing.JRadioButton();
         Difficult = new javax.swing.JRadioButton();
-        exit = new javax.swing.JButton();
+        ok = new javax.swing.JButton();
         exit1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         MovementLabel = new javax.swing.JLabel();
@@ -134,16 +140,21 @@ public class OptionsPage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 130, 90));
 
-        exit.setBackground(new java.awt.Color(0, 255, 153));
-        exit.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
-        exit.setForeground(new java.awt.Color(0, 51, 51));
-        exit.setText("OK");
-        exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitActionPerformed(evt);
+        ok.setBackground(new java.awt.Color(0, 255, 153));
+        ok.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        ok.setForeground(new java.awt.Color(0, 51, 51));
+        ok.setText("OK");
+        ok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                okMouseClicked(evt);
             }
         });
-        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 90, 30));
+        ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 90, 30));
 
         exit1.setBackground(new java.awt.Color(255, 51, 153));
         exit1.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
@@ -179,9 +190,21 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BombTilesEnableActionPerformed
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }//GEN-LAST:event_exitActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+     if(diff.equals(easy)){
+        MainGame easy = new MainGame();
+        easy.show();
+        easy.difficultySelect("easy");
+     }else if(diff.equals(ave)){
+        MainGame ave = new MainGame();
+        ave.show();
+        ave.difficultySelect("average");
+     }else if(diff.equals(hard)){
+        MainGame hard = new MainGame();
+        hard.show();
+        hard.difficultySelect("difficult");
+     }
+    }//GEN-LAST:event_okActionPerformed
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
         // TODO add your handling code here:
@@ -194,26 +217,39 @@ public class OptionsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_EasyActionPerformed
 
     private void EasyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EasyItemStateChanged
-        // TODO add your handling code here:
-        MainGame easy = new MainGame();
-        easy.show();
-        easy.difficultySelect("easy");
+        // TODO add your handling code here:         
+        diff= easy;
     }//GEN-LAST:event_EasyItemStateChanged
 
     private void AverageItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AverageItemStateChanged
         // TODO add your handling code here:
-        MainGame ave = new MainGame();
-        ave.show();
-        ave.difficultySelect("average");
+        diff= ave;      
     }//GEN-LAST:event_AverageItemStateChanged
 
     private void DifficultItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DifficultItemStateChanged
         // TODO add your handling code here:
+        diff= hard;
+ 
+    }//GEN-LAST:event_DifficultItemStateChanged
+
+    private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
+        // TODO add your handling code here:
+        if(diff==easy){
+        MainGame easy = new MainGame();
+        easy.show();
+        easy.difficultySelect("easy");
+     }else if(diff==ave){
+        MainGame ave = new MainGame();
+        ave.show();
+        ave.difficultySelect("average");
+     }else if(diff==hard){
         MainGame hard = new MainGame();
         hard.show();
         hard.difficultySelect("difficult");
-    }//GEN-LAST:event_DifficultItemStateChanged
-
+     }
+    }//GEN-LAST:event_okMouseClicked
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -265,10 +301,10 @@ public class OptionsPage extends javax.swing.JFrame {
     private javax.swing.JRadioButton MovementRestrict;
     private javax.swing.ButtonGroup btGrpRestrict;
     private javax.swing.ButtonGroup difficulty;
-    private javax.swing.JButton exit;
     private javax.swing.JButton exit1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ok;
     // End of variables declaration//GEN-END:variables
 }
