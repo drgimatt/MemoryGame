@@ -75,15 +75,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void setUpGameColor(){
         initializeStats();
-        firstSelected = 15;
-        secondSelected = 15;
+        firstSelected = totalTiles;
+        secondSelected = totalTiles;
         tilesAreText = false;
-        Colorboard = color;
         tiles = 4;
         length = color.length;
         totalTiles = (int) Math.pow(tiles, 2);
         MainGame.setLayout(new GridLayout(4,4,2,2));
-        totalTiles = (int) Math.pow(tiles, 2);
         Color Colorboard [] = new Color [totalTiles];
         for(int i=0;i<totalTiles;i++){
 			btn[i] = new JButton("");
@@ -94,7 +92,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 		
 		}
         
-        for (int i = 0; i < totalTiles; i++){
+        for (int i = 0; i < length; i++){
             resp[i] = color[i];
         }
 
@@ -110,7 +108,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 		}
             }		
 	}
-}
+
+    }
     
     public void setUpGameText(String flag){
         initializeStats();    
@@ -183,14 +182,15 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     }
 
     public void flipTileColor(int i){
-        if(Colorboard[i] != Colorboard[firstSelected]){
-            if(btn[i].getBackground()== standard){
-                showSpecificTileColor(i);
-            }
-            else{
-                btn[i].setBackground(standard);
-            }
-        }
+                System.out.println(Colorboard[i]);
+//        if(Colorboard[i] != Colorboard[firstSelected]){
+//            if(btn[i].getBackground()== standard){
+//                showSpecificTileColor(i);
+//            }
+//            else{
+//                btn[i].setBackground(standard);
+//            }
+//        }
     }
     
     public void hideAllTileColor(){
