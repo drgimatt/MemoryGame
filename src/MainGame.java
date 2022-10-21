@@ -160,6 +160,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         jLabel3 = new javax.swing.JLabel();
         NumClickLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        start = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
         NewGame = new javax.swing.JMenuItem();
@@ -206,6 +207,16 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("5:30");
 
+        start.setBackground(new java.awt.Color(0, 255, 153));
+        start.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
+        start.setForeground(new java.awt.Color(0, 51, 51));
+        start.setText("END GAME");
+        start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout StatsLayout = new javax.swing.GroupLayout(Stats);
         Stats.setLayout(StatsLayout);
         StatsLayout.setHorizontalGroup(
@@ -218,7 +229,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                             .addComponent(NumCorrMatchLabel)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(NumIncorrMatchLabel)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(StatsLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(StatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -251,7 +263,9 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                 .addComponent(NumIncorrMatchLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         Game.setText("Game");
@@ -334,6 +348,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         help.show();
     }//GEN-LAST:event_InstructionActionPerformed
 
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        // TODO add your handling code here:
+        OptionsPage options = new OptionsPage();
+        options.show();
+        dispose();
+    }//GEN-LAST:event_startActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -394,6 +415,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 
     @Override
