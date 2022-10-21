@@ -36,6 +36,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     int incorrectTiles = 0;
     int tries = 0;
     private boolean purgatory = false;
+    private boolean purgatoryTest = false;
     boolean tilesAreText = false;
     boolean showTilesInitial = true;
     Color standard = new Color(220, 220, 220);
@@ -43,11 +44,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     JButton btn[] = new JButton[50];
     String[] board;
     Color[] Colorboard;
-    Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
+    Color[] color = {Color.blue,Color.green,Color.orange,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
     String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
-    
+    Color resp [] = new Color[40];
     public void difficultySelect(String difficulty){
         if(difficulty == "easy"){
             setUpGameColor();
@@ -68,18 +69,20 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         incorrectTiles = 0;
         tries = 0;
         purgatory = false;
+        purgatoryTest = false;
         showTilesInitial = true; 
     }
     
     public void setUpGameColor(){
         initializeStats();
+        firstSelected = 15;
+        secondSelected = 15;
         tilesAreText = false;
-        ans = symbols;
+        Colorboard = color;
         tiles = 4;
-        length = 8;
-
+        length = color.length;
+        totalTiles = (int) Math.pow(tiles, 2);
         MainGame.setLayout(new GridLayout(4,4,2,2));
-        Color ans [] = new Color[14];
         totalTiles = (int) Math.pow(tiles, 2);
         Color Colorboard [] = new Color [totalTiles];
         for(int i=0;i<totalTiles;i++){
@@ -91,8 +94,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 		
 		}
         
-        for (int i = 0; i < length; i++){
-            ans[i] = color[i];
+        for (int i = 0; i < totalTiles; i++){
+            resp[i] = color[i];
         }
 
         for(int i=0;i<length;i++){
@@ -100,9 +103,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 		while(true){	
 			int y = randomGenerator.nextInt(length*2);
 			if(Colorboard[y]==null){
-			btn[y].setBackground(ans[i]);
-                        Colorboard[y]=ans[i];
-                        System.out.println(Colorboard[y].toString());
+			btn[y].setBackground(resp[i]);
+                        Colorboard[y]=resp[i];
 			break;
 			}
 		}
@@ -194,6 +196,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     public void hideAllTileColor(){
         for(int i=0; i<totalTiles; i++){
            btn[i].setBackground(standard);
+           showTilesInitial = false;
         }
     }
     
@@ -219,7 +222,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void playerWon(){
         JOptionPane.showMessageDialog(null,"Congratulations. You won!","WINNER",JOptionPane.PLAIN_MESSAGE);
-        //System.exit(0);
+        dispose();
     }
     
     public MainGame() {
@@ -501,8 +504,15 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                 flipTileText(secondSelected);
                 flipTileText(firstSelected);
                 firstSelected = totalTiles;
-                secondSelected = 30;
+                secondSelected = 40;
                 purgatory = false;
+            }
+             if(purgatoryTest){
+                flipTileColor(secondSelected);
+                flipTileColor(firstSelected);
+                firstSelected = totalTiles;
+                secondSelected = 40;
+                purgatoryTest = false;
             }
             for (int i = 0; i < totalTiles; i++){
             if (source == btn[i]){
@@ -546,7 +556,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                         }
                             if((Colorboard[firstSelected] != Colorboard[i]) || (firstSelected == i)){
                                 secondSelected = i;
-                                purgatory = true;
+                                purgatoryTest = true;
                                 incorrectTiles++;
                                 tries++;
                             }
