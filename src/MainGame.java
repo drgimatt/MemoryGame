@@ -33,6 +33,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     Random randomGenerator = new Random();
     JButton btn[] = new JButton[50];
     String[] board;
+    Color[] Colorboard;
     Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
     String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};//easier version
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²"}; //math equations
@@ -135,7 +136,34 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 	}
 }    
 
+    public void showSpecificTileText(int i){
+        btn[i].setText(board[i]);
+    }
     
+    public void hideAllTileText (int i){
+        for(i=0; i<totalTiles; i++){
+           btn[i].setBackground(new Color(220, 220, 220));
+        }
+    }
+    
+    public void showSpecificTileColor(int i){
+        btn[i].setBackground(Colorboard[i]);
+    }
+    
+    public void hideAllTileColor(int i){
+        for(i=0; i<totalTiles; i++){
+           btn[i].setText("");
+        }
+    }
+    
+    public boolean checkWinText(){
+        for(int i=0; i<totalTiles; i++){
+            if (board[i] != "done"){
+            return false;
+        }
+        }
+        return true;
+    }
     public MainGame() {
         initComponents();
         //difficultySelect("difficult");
