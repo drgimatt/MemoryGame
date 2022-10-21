@@ -1,5 +1,7 @@
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -55,18 +57,18 @@ public class OptionsPage extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btGrpRestrict.add(MovementRestrict);
-        MovementRestrict.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        MovementRestrict.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementRestrict.setForeground(new java.awt.Color(255, 255, 255));
         MovementRestrict.setText("Yes");
         getContentPane().add(MovementRestrict, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
         btGrpRestrict.add(MovementFree);
-        MovementFree.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        MovementFree.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementFree.setForeground(new java.awt.Color(255, 255, 255));
         MovementFree.setText("No");
         getContentPane().add(MovementFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 51, -1));
 
-        BombTilesEnable.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        BombTilesEnable.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         BombTilesEnable.setForeground(new java.awt.Color(255, 255, 255));
         BombTilesEnable.setText("Enable Bomb Tiles");
         BombTilesEnable.addActionListener(new java.awt.event.ActionListener() {
@@ -79,15 +81,15 @@ public class OptionsPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        Easy.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        Easy.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Easy.setForeground(new java.awt.Color(255, 255, 255));
         Easy.setText("Easy");
 
-        Average.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        Average.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Average.setForeground(new java.awt.Color(255, 255, 255));
         Average.setText("Average");
 
-        Difficult.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        Difficult.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Difficult.setForeground(new java.awt.Color(255, 255, 255));
         Difficult.setText("Difficult");
 
@@ -101,21 +103,20 @@ public class OptionsPage extends javax.swing.JFrame {
                     .addComponent(Easy)
                     .addComponent(Difficult)
                     .addComponent(Average))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(Easy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Average)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Difficult)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Difficult))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 130, 80));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 130, 90));
 
         exit.setBackground(new java.awt.Color(0, 255, 153));
         exit.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
@@ -137,16 +138,16 @@ public class OptionsPage extends javax.swing.JFrame {
                 exit1ActionPerformed(evt);
             }
         });
-        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 90, 30));
+        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 100, 30));
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
-        MovementLabel.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        MovementLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementLabel.setForeground(new java.awt.Color(255, 255, 255));
         MovementLabel.setText("movements?");
         MovementLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         getContentPane().add(MovementLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 160, 20));
 
-        MovementLabel1.setFont(new java.awt.Font("Andale Mono", 0, 13)); // NOI18N
+        MovementLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementLabel1.setForeground(new java.awt.Color(255, 255, 255));
         MovementLabel1.setText("Restrict number of ");
         MovementLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
@@ -252,11 +253,16 @@ public class OptionsPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try{
+        UIManager.setLookAndFeel( new FlatDarkLaf() );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartPage().setVisible(true);
+                new OptionsPage().setVisible(true);
             }
         });
+        } catch( Exception ex ) {
+                System.err.println( "Failed to initialize LaF" );
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,5 +1,8 @@
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,20 +33,13 @@ public class InstPage extends javax.swing.JFrame {
 
         exit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Game = new javax.swing.JMenu();
-        NewGame = new javax.swing.JMenuItem();
-        Options = new javax.swing.JMenuItem();
-        Quit = new javax.swing.JMenuItem();
-        Help = new javax.swing.JMenu();
-        Instruction = new javax.swing.JMenuItem();
-        About = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        exit.setBackground(new java.awt.Color(102, 102, 102));
         exit.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
-        exit.setForeground(new java.awt.Color(0, 51, 51));
+        exit.setForeground(new java.awt.Color(0, 204, 204));
         exit.setText("EXIT");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,65 +51,11 @@ public class InstPage extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/instBG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
-        Game.setText("Game");
-
-        NewGame.setText("New Game");
-        NewGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewGameActionPerformed(evt);
-            }
-        });
-        Game.add(NewGame);
-
-        Options.setText("Options");
-        Game.add(Options);
-
-        Quit.setText("Quit");
-        Quit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QuitActionPerformed(evt);
-            }
-        });
-        Game.add(Quit);
-
-        jMenuBar1.add(Game);
-
-        Help.setText("Help");
-
-        Instruction.setText("Instructions");
-        Help.add(Instruction);
-
-        About.setText("About");
-        About.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AboutActionPerformed(evt);
-            }
-        });
-        Help.add(About);
-
-        jMenuBar1.add(Help);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NewGameActionPerformed
-
-    private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_QuitActionPerformed
-
-    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_AboutActionPerformed
-
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        dispose();
     }//GEN-LAST:event_exitActionPerformed
 
     /**
@@ -144,23 +86,20 @@ public class InstPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try{
+        UIManager.setLookAndFeel( new FlatDarkLaf() );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartPage().setVisible(true);
+                new InstPage().setVisible(true);
             }
         });
+        } catch( Exception ex ) {
+                System.err.println( "Failed to initialize LaF" );
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem About;
-    private javax.swing.JMenu Game;
-    private javax.swing.JMenu Help;
-    private javax.swing.JMenuItem Instruction;
-    private javax.swing.JMenuItem NewGame;
-    private javax.swing.JMenuItem Options;
-    private javax.swing.JMenuItem Quit;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

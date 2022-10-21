@@ -106,9 +106,9 @@ public class GameM implements ActionListener {
 		
 		String[] b = {":-D","X","O","-(*.*)-","<>","<(^-^)>","=>",";^P","ABC","123"};//harder version
 		String[] c = {"square","circle","rectangle","heart","diamond","clover","spade","triangle","polygon","tetrahedral"};//easier version
-                String[] d = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²" //math equations
+                String[] d = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²"}; //math equations
 		if(what) a=c;//if what is true, make the game easy and use c
-                if else (what) c=d;
+                else if (what) c=d;
 		else a=b;//otherwise make it hard and use b
 			
 		for(int i=0;i<x;i++){

@@ -1,5 +1,7 @@
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,30 +33,34 @@ public class StartPage extends javax.swing.JFrame {
         difficult = new javax.swing.JButton();
         medium = new javax.swing.JButton();
         easy = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Game = new javax.swing.JMenu();
-        NewGame = new javax.swing.JMenuItem();
-        Options = new javax.swing.JMenuItem();
-        Quit = new javax.swing.JMenuItem();
-        Help = new javax.swing.JMenu();
-        Instruction = new javax.swing.JMenuItem();
-        About = new javax.swing.JMenuItem();
+        help = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         difficult.setBackground(new java.awt.Color(204, 0, 102));
         difficult.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         difficult.setForeground(new java.awt.Color(255, 204, 204));
         difficult.setText("DIFFICULT");
-        getContentPane().add(difficult, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 110, 40));
+        difficult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                difficultActionPerformed(evt);
+            }
+        });
+        getContentPane().add(difficult, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 110, 40));
 
         medium.setBackground(new java.awt.Color(255, 153, 0));
         medium.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         medium.setForeground(new java.awt.Color(128, 59, 9));
         medium.setText("MEDIUM");
-        getContentPane().add(medium, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 90, 40));
+        medium.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediumActionPerformed(evt);
+            }
+        });
+        getContentPane().add(medium, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 90, 40));
 
         easy.setBackground(new java.awt.Color(0, 255, 153));
         easy.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
@@ -65,71 +71,54 @@ public class StartPage extends javax.swing.JFrame {
                 easyActionPerformed(evt);
             }
         });
-        getContentPane().add(easy, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 80, 40));
+        getContentPane().add(easy, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 80, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startBG.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
-
-        Game.setText("Game");
-
-        NewGame.setText("New Game");
-        NewGame.addActionListener(new java.awt.event.ActionListener() {
+        help.setBackground(new java.awt.Color(0, 248, 203));
+        help.setFont(new java.awt.Font("Arial Black", 1, 13)); // NOI18N
+        help.setForeground(new java.awt.Color(102, 102, 102));
+        help.setText("HELP");
+        help.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewGameActionPerformed(evt);
+                helpActionPerformed(evt);
             }
         });
-        Game.add(NewGame);
+        getContentPane().add(help, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 90, 40));
 
-        Options.setText("Options");
-        Game.add(Options);
-
-        Quit.setText("Quit");
-        Quit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QuitActionPerformed(evt);
-            }
-        });
-        Game.add(Quit);
-
-        jMenuBar1.add(Game);
-
-        Help.setText("Help");
-
-        Instruction.setText("Instructions");
-        Help.add(Instruction);
-
-        About.setText("About");
-        About.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AboutActionPerformed(evt);
-            }
-        });
-        Help.add(About);
-
-        jMenuBar1.add(Help);
-
-        setJMenuBar(jMenuBar1);
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/startBG.png"))); // NOI18N
+        getContentPane().add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NewGameActionPerformed
-
-    private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_QuitActionPerformed
-
-    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_AboutActionPerformed
-
     private void easyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyActionPerformed
         // TODO add your handling code here:
+        MainGame easy = new MainGame();
+        easy.show();
+        easy.difficultySelect("average");
+        dispose();
     }//GEN-LAST:event_easyActionPerformed
+
+    private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
+        // TODO add your handling code here:
+        InstPage help = new InstPage();
+        help.show();
+    }//GEN-LAST:event_helpActionPerformed
+
+    private void mediumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumActionPerformed
+        // TODO add your handling code here:
+        MainGame average = new MainGame();
+        average.show();
+        average.difficultySelect("average");
+        dispose();        
+    }//GEN-LAST:event_mediumActionPerformed
+
+    private void difficultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultActionPerformed
+        // TODO add your handling code here:
+        MainGame hard = new MainGame();
+        hard.show();
+        hard.difficultySelect("difficult");
+        dispose();
+    }//GEN-LAST:event_difficultActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,25 +148,23 @@ public class StartPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try{
+        UIManager.setLookAndFeel( new FlatDarkLaf() );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new StartPage().setVisible(true);
             }
         });
+        } catch( Exception ex ) {
+                System.err.println( "Failed to initialize LaF" );
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem About;
-    private javax.swing.JMenu Game;
-    private javax.swing.JMenu Help;
-    private javax.swing.JMenuItem Instruction;
-    private javax.swing.JMenuItem NewGame;
-    private javax.swing.JMenuItem Options;
-    private javax.swing.JMenuItem Quit;
     private javax.swing.JButton difficult;
     private javax.swing.JButton easy;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton help;
+    private javax.swing.JLabel image;
     private javax.swing.JButton medium;
     // End of variables declaration//GEN-END:variables
 }

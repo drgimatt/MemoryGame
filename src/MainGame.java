@@ -1,5 +1,11 @@
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -12,13 +18,120 @@ import javax.swing.UIManager;
  *
  * @author boxro
  */
-public class MainGame extends javax.swing.JFrame {
+public class MainGame extends javax.swing.JFrame{
 
     /**
      * Creates new form OptionsPage
      */
+    
+    int x = 0;
+    Random randomGenerator = new Random();
+    JButton btn[] = new JButton[50];
+    String[] board;
+
+    public void difficultySelect(String difficulty){
+    if( null == difficulty){}
+    else switch (difficulty) {
+            case "easy":
+                //setUpGameColor();
+                break;
+            case "average":
+                setUpGameText(difficulty);
+            case "difficult":
+                setUpGameText(difficulty);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    public void setUpGameColor(){
+        x = 9;
+        Color ans [] = new Color[10];
+        Color Colorboard [] = new Color [2*x];
+        for(int i=0;i<x;i++){
+			btn[i] = new JButton("");
+                        btn[i].setBackground(new Color(220, 220, 220)); 
+       			btn[i].setEnabled(true);
+			MainGame.add(btn[i]);
+		
+		}
+
+        Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
+//        for (int i = 0; i < color.length; i++){
+//            ans[i] = color[i];
+//        }
+        
+        ans = color;
+
+        for(int i=0;i<x;i++){
+            for(int z=0;z<2;z++){
+		while(true){	
+			int y = randomGenerator.nextInt(x*2);
+			if(Colorboard[y]==null){
+			btn[y].setBackground(ans[i]);
+			Colorboard[y]=ans[i];
+			break;
+			}
+		}
+            }
+				
+			
+	}
+}
+    
+    public void setUpGameText(String flag){
+        //StringTilesLogic listener = StringTilesLogic.getInstance();
+        Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
+        String[] b = {":-D","X","O","-(*.*)-","<>","<(^-^)>","=>",";^P","ABC","123"};//harder version
+	String[] words = {"square","circle","rectangle","heart","diamond","clover","spade","triangle","polygon","tetrahedral"};//easier version
+        String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²"}; //math equations
+	String ans [] = new String[10];
+        if(flag == "average") {
+            ans = words;
+            x = 4;
+            
+        }//if what is true, make the game easy and use c
+        else if (flag == "difficult"){ 
+            ans = equations;
+            x = 10;
+        }
+	else {
+            ans = b;//otherwise make it hard and use b
+        }
+        
+        
+        board = new String [2*x];
+        for(int i=0;i<(x*2);i++){
+			btn[i] = new JButton("");
+			btn[i].setBackground(new Color(220, 220, 220));
+                        btn[i].setForeground(Color.black);
+			btn[i].setEnabled(true);
+                        //btn[i].addActionListener(listener);
+			MainGame.add(btn[i]);
+		
+		}
+
+        for(int i=0;i<x;i++){
+            for(int z=0;z<2;z++){
+		while(true){	
+			int y = randomGenerator.nextInt(x*2);
+			if(board[y]==null){
+			btn[y].setText(ans[i]);
+			board[y]=ans[i];
+			break;
+			}
+		}
+            }
+				
+			
+	}
+}    
+
+    
     public MainGame() {
         initComponents();
+        difficultySelect("average");
     }
 
     /**
@@ -53,17 +166,7 @@ public class MainGame extends javax.swing.JFrame {
 
         MainGame.setBackground(new java.awt.Color(153, 0, 102));
         MainGame.setForeground(new java.awt.Color(255, 102, 102));
-
-        javax.swing.GroupLayout MainGameLayout = new javax.swing.GroupLayout(MainGame);
-        MainGame.setLayout(MainGameLayout);
-        MainGameLayout.setHorizontalGroup(
-            MainGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-        MainGameLayout.setVerticalGroup(
-            MainGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        MainGame.setLayout(new java.awt.GridLayout(5, 5));
 
         NumClickLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumClickLabel.setText("Number of Clicks:");
@@ -200,7 +303,7 @@ public class MainGame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(MainGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MainGame, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Stats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -215,6 +318,7 @@ public class MainGame extends javax.swing.JFrame {
 
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
+ 
     }//GEN-LAST:event_NewGameActionPerformed
 
     private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
@@ -229,13 +333,13 @@ public class MainGame extends javax.swing.JFrame {
 
     private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
         // TODO add your handling code here:
-        Frame5 options = new Frame5();
+        OptionsPage options = new OptionsPage();
         options.show();
     }//GEN-LAST:event_OptionsActionPerformed
 
     private void InstructionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionActionPerformed
         // TODO add your handling code here:
-        instruction help = new instruction();
+        InstPage help = new InstPage();
         help.show();
     }//GEN-LAST:event_InstructionActionPerformed
 
@@ -270,7 +374,7 @@ public class MainGame extends javax.swing.JFrame {
         /* Create and display the form */
         
         try{
-        UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+        UIManager.setLookAndFeel( new FlatDarkLaf() );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGame().setVisible(true);
