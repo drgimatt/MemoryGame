@@ -2,8 +2,11 @@
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -18,38 +21,45 @@ import javax.swing.UIManager;
  *
  * @author boxro
  */
-public class MainGame extends javax.swing.JFrame{
+public class MainGame extends javax.swing.JFrame implements MouseListener{
 
     /**
      * Creates new form OptionsPage
      */
     
-    int x = 0;
+    int tiles = 0;
+    int totalTiles = 0;
+    int length = 0;
     Random randomGenerator = new Random();
     JButton btn[] = new JButton[50];
     String[] board;
-
+    Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
+    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};//easier version
+    String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²"}; //math equations
+    String ans [] = new String[25];
+    
     public void difficultySelect(String difficulty){
-    if( null == difficulty){}
-    else switch (difficulty) {
-            case "easy":
-                //setUpGameColor();
-                break;
-            case "average":
-                setUpGameText(difficulty);
-            case "difficult":
-                setUpGameText(difficulty);
-                break;
-            default:
-                break;
+        if(difficulty == "easy"){
+            setUpGameColor();
         }
+        else if (difficulty == "average"){
+            setUpGameText("average");
+        }
+        else if (difficulty == "difficult"){
+            setUpGameText("difficult");
+        }
+            
     }
     
     public void setUpGameColor(){
-        x = 9;
-        Color ans [] = new Color[10];
-        Color Colorboard [] = new Color [2*x];
-        for(int i=0;i<x;i++){
+        ans = symbols;
+        tiles = 4;
+        length = 8;
+        MainGame.setLayout(new GridLayout(4,4,2,2));
+        Color ans [] = new Color[14];
+        totalTiles = (int) Math.pow(tiles, 2);
+        Color Colorboard [] = new Color [totalTiles];
+        for(int i=0;i<totalTiles;i++){
 			btn[i] = new JButton("");
                         btn[i].setBackground(new Color(220, 220, 220)); 
        			btn[i].setEnabled(true);
@@ -57,17 +67,16 @@ public class MainGame extends javax.swing.JFrame{
 		
 		}
 
-        Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
-//        for (int i = 0; i < color.length; i++){
-//            ans[i] = color[i];
-//        }
         
-        ans = color;
+        for (int i = 0; i < length; i++){
+            ans[i] = color[i];
+        }
+        
 
-        for(int i=0;i<x;i++){
+        for(int i=0;i<length;i++){
             for(int z=0;z<2;z++){
 		while(true){	
-			int y = randomGenerator.nextInt(x*2);
+			int y = randomGenerator.nextInt(length*2);
 			if(Colorboard[y]==null){
 			btn[y].setBackground(ans[i]);
 			Colorboard[y]=ans[i];
@@ -81,41 +90,39 @@ public class MainGame extends javax.swing.JFrame{
 }
     
     public void setUpGameText(String flag){
-        //StringTilesLogic listener = StringTilesLogic.getInstance();
-        Color[] color = {Color.white,Color.blue,Color.green,Color.orange,Color.yellow,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
-        String[] b = {":-D","X","O","-(*.*)-","<>","<(^-^)>","=>",";^P","ABC","123"};//harder version
-	String[] words = {"square","circle","rectangle","heart","diamond","clover","spade","triangle","polygon","tetrahedral"};//easier version
-        String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²"}; //math equations
-	String ans [] = new String[10];
+          
         if(flag == "average") {
-            ans = words;
-            x = 4;
-            
-        }//if what is true, make the game easy and use c
+            ans = symbols;
+            tiles = 4;
+            length = symbols.length;
+            MainGame.setLayout(new GridLayout(4,4,2,2));
+        }
         else if (flag == "difficult"){ 
             ans = equations;
-            x = 10;
+            tiles = 6;
+            length = equations.length;
+            MainGame.setLayout(new GridLayout(6,6,2,2));
         }
-	else {
-            ans = b;//otherwise make it hard and use b
-        }
+
         
-        
-        board = new String [2*x];
-        for(int i=0;i<(x*2);i++){
+        totalTiles = (int) Math.pow(tiles, 2);
+        System.out.println(flag);
+        System.out.println(totalTiles);
+        board = new String [totalTiles];
+        for(int i=0;i<(totalTiles);i++){
 			btn[i] = new JButton("");
 			btn[i].setBackground(new Color(220, 220, 220));
                         btn[i].setForeground(Color.black);
 			btn[i].setEnabled(true);
-                        //btn[i].addActionListener(listener);
+                        btn[i].addMouseListener(this);
 			MainGame.add(btn[i]);
 		
 		}
 
-        for(int i=0;i<x;i++){
+        for(int i=0;i<length;i++){
             for(int z=0;z<2;z++){
 		while(true){	
-			int y = randomGenerator.nextInt(x*2);
+			int y = randomGenerator.nextInt(length*2);
 			if(board[y]==null){
 			btn[y].setText(ans[i]);
 			board[y]=ans[i];
@@ -131,7 +138,7 @@ public class MainGame extends javax.swing.JFrame{
     
     public MainGame() {
         initComponents();
-        difficultySelect("average");
+        difficultySelect("easy");
     }
 
     /**
@@ -156,7 +163,6 @@ public class MainGame extends javax.swing.JFrame{
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
         NewGame = new javax.swing.JMenuItem();
-        Options = new javax.swing.JMenuItem();
         Quit = new javax.swing.JMenuItem();
         Help = new javax.swing.JMenu();
         Instruction = new javax.swing.JMenuItem();
@@ -258,14 +264,6 @@ public class MainGame extends javax.swing.JFrame{
         });
         Game.add(NewGame);
 
-        Options.setText("Options");
-        Options.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OptionsActionPerformed(evt);
-            }
-        });
-        Game.add(Options);
-
         Quit.setText("Quit");
         Quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +316,6 @@ public class MainGame extends javax.swing.JFrame{
 
     private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
         // TODO add your handling code here:
- 
     }//GEN-LAST:event_NewGameActionPerformed
 
     private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
@@ -330,12 +327,6 @@ public class MainGame extends javax.swing.JFrame{
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_AboutActionPerformed
-
-    private void OptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionsActionPerformed
-        // TODO add your handling code here:
-        OptionsPage options = new OptionsPage();
-        options.show();
-    }//GEN-LAST:event_OptionsActionPerformed
 
     private void InstructionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionActionPerformed
         // TODO add your handling code here:
@@ -396,7 +387,6 @@ public class MainGame extends javax.swing.JFrame{
     private javax.swing.JLabel NumClickLabel1;
     private javax.swing.JLabel NumCorrMatchLabel;
     private javax.swing.JLabel NumIncorrMatchLabel;
-    private javax.swing.JMenuItem Options;
     private javax.swing.JMenuItem Quit;
     private javax.swing.JPanel Stats;
     private javax.swing.JLabel jLabel1;
@@ -405,4 +395,34 @@ public class MainGame extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    Object source = e.getSource();
+            for (int i = 0; i < totalTiles; i++){
+            if (source == btn[i]){
+                System.out.println(btn[i].getText());
+        }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
