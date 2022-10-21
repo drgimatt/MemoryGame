@@ -40,7 +40,7 @@ public class InstPage extends javax.swing.JFrame {
         exit.setBackground(new java.awt.Color(102, 102, 102));
         exit.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         exit.setForeground(new java.awt.Color(0, 204, 204));
-        exit.setText("EXIT");
+        exit.setText("BACK");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
@@ -55,6 +55,8 @@ public class InstPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        StartPage start= new StartPage();
+        start.show();
         dispose();
     }//GEN-LAST:event_exitActionPerformed
 

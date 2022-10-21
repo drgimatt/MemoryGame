@@ -31,6 +31,7 @@ public class OptionsPage extends javax.swing.JFrame {
     private void initComponents() {
 
         btGrpRestrict = new javax.swing.ButtonGroup();
+        difficulty = new javax.swing.ButtonGroup();
         MovementRestrict = new javax.swing.JRadioButton();
         MovementFree = new javax.swing.JRadioButton();
         BombTilesEnable = new javax.swing.JCheckBox();
@@ -44,14 +45,6 @@ public class OptionsPage extends javax.swing.JFrame {
         MovementLabel = new javax.swing.JLabel();
         MovementLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Game = new javax.swing.JMenu();
-        NewGame = new javax.swing.JMenuItem();
-        Options = new javax.swing.JMenuItem();
-        Quit = new javax.swing.JMenuItem();
-        Help = new javax.swing.JMenu();
-        Instruction = new javax.swing.JMenuItem();
-        About = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,17 +74,40 @@ public class OptionsPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
+        difficulty.add(Easy);
         Easy.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Easy.setForeground(new java.awt.Color(255, 255, 255));
         Easy.setText("Easy");
+        Easy.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EasyItemStateChanged(evt);
+            }
+        });
+        Easy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EasyActionPerformed(evt);
+            }
+        });
 
+        difficulty.add(Average);
         Average.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Average.setForeground(new java.awt.Color(255, 255, 255));
         Average.setText("Average");
+        Average.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AverageItemStateChanged(evt);
+            }
+        });
 
+        difficulty.add(Difficult);
         Difficult.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Difficult.setForeground(new java.awt.Color(255, 255, 255));
         Difficult.setText("Difficult");
+        Difficult.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DifficultItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,7 +124,7 @@ public class OptionsPage extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(Easy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Average)
@@ -156,62 +172,8 @@ public class OptionsPage extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/optBG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
-        Game.setText("Game");
-
-        NewGame.setText("New Game");
-        NewGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewGameActionPerformed(evt);
-            }
-        });
-        Game.add(NewGame);
-
-        Options.setText("Options");
-        Game.add(Options);
-
-        Quit.setText("Quit");
-        Quit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QuitActionPerformed(evt);
-            }
-        });
-        Game.add(Quit);
-
-        jMenuBar1.add(Game);
-
-        Help.setText("Help");
-
-        Instruction.setText("Instructions");
-        Help.add(Instruction);
-
-        About.setText("About");
-        About.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AboutActionPerformed(evt);
-            }
-        });
-        Help.add(About);
-
-        jMenuBar1.add(Help);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void NewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NewGameActionPerformed
-
-    private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_QuitActionPerformed
-
-    private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "MemoryGame \nVersion 1.0-ALPHA\nMembers:\nAlthea Louise Cruz\nFrancoise Tuala \nKatrice Asher\nMiguel Escandor\nVashti Leonie", "About", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_AboutActionPerformed
 
     private void BombTilesEnableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BombTilesEnableActionPerformed
         // TODO add your handling code here:
@@ -223,7 +185,34 @@ public class OptionsPage extends javax.swing.JFrame {
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
         // TODO add your handling code here:
+        StartPage start= new StartPage();
+        start.show();
     }//GEN-LAST:event_exit1ActionPerformed
+
+    private void EasyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EasyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EasyActionPerformed
+
+    private void EasyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EasyItemStateChanged
+        // TODO add your handling code here:
+        MainGame easy = new MainGame();
+        easy.show();
+        easy.difficultySelect("easy");
+    }//GEN-LAST:event_EasyItemStateChanged
+
+    private void AverageItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AverageItemStateChanged
+        // TODO add your handling code here:
+        MainGame ave = new MainGame();
+        ave.show();
+        ave.difficultySelect("average");
+    }//GEN-LAST:event_AverageItemStateChanged
+
+    private void DifficultItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DifficultItemStateChanged
+        // TODO add your handling code here:
+        MainGame hard = new MainGame();
+        hard.show();
+        hard.difficultySelect("difficult");
+    }//GEN-LAST:event_DifficultItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -266,27 +255,20 @@ public class OptionsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem About;
     private javax.swing.JRadioButton Average;
     private javax.swing.JCheckBox BombTilesEnable;
     private javax.swing.JRadioButton Difficult;
     private javax.swing.JRadioButton Easy;
-    private javax.swing.JMenu Game;
-    private javax.swing.JMenu Help;
-    private javax.swing.JMenuItem Instruction;
     private javax.swing.JRadioButton MovementFree;
     private javax.swing.JLabel MovementLabel;
     private javax.swing.JLabel MovementLabel1;
     private javax.swing.JRadioButton MovementRestrict;
-    private javax.swing.JMenuItem NewGame;
-    private javax.swing.JMenuItem Options;
-    private javax.swing.JMenuItem Quit;
     private javax.swing.ButtonGroup btGrpRestrict;
+    private javax.swing.ButtonGroup difficulty;
     private javax.swing.JButton exit;
     private javax.swing.JButton exit1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
