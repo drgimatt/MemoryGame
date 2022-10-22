@@ -222,6 +222,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void playerWon(){
         JOptionPane.showMessageDialog(null,"Congratulations. You won!","WINNER",JOptionPane.PLAIN_MESSAGE);
+        tryAgain tryAgain= new tryAgain();
+        tryAgain.show();
         dispose();
     }
     
