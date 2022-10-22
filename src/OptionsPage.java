@@ -20,6 +20,8 @@ public class OptionsPage extends javax.swing.JFrame {
      */
     
     String diff = "easy";
+    boolean bombEnable = false;
+    int gameDuration = 0;
     
     public OptionsPage() {
         initComponents();
@@ -91,9 +93,10 @@ public class OptionsPage extends javax.swing.JFrame {
         BombTilesEnable.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         BombTilesEnable.setForeground(new java.awt.Color(255, 255, 255));
         BombTilesEnable.setText("Enable Bomb Tiles");
-        BombTilesEnable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BombTilesEnableActionPerformed(evt);
+        BombTilesEnable.setEnabled(false);
+        BombTilesEnable.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BombTilesEnableItemStateChanged(evt);
             }
         });
         getContentPane().add(BombTilesEnable, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, 50));
@@ -191,10 +194,12 @@ public class OptionsPage extends javax.swing.JFrame {
 
         timeGrp.add(oneMin);
         oneMin.setForeground(new java.awt.Color(255, 255, 255));
+        oneMin.setSelected(true);
         oneMin.setText("1 min");
-        oneMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oneMinActionPerformed(evt);
+        oneMin.setEnabled(false);
+        oneMin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                oneMinItemStateChanged(evt);
             }
         });
         getContentPane().add(oneMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
@@ -202,9 +207,10 @@ public class OptionsPage extends javax.swing.JFrame {
         timeGrp.add(threeMin);
         threeMin.setForeground(new java.awt.Color(255, 255, 255));
         threeMin.setText("3 mins");
-        threeMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                threeMinActionPerformed(evt);
+        threeMin.setEnabled(false);
+        threeMin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                threeMinItemStateChanged(evt);
             }
         });
         getContentPane().add(threeMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
@@ -212,9 +218,10 @@ public class OptionsPage extends javax.swing.JFrame {
         timeGrp.add(fiveMin);
         fiveMin.setForeground(new java.awt.Color(255, 255, 255));
         fiveMin.setText("5 mins");
-        fiveMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fiveMinActionPerformed(evt);
+        fiveMin.setEnabled(false);
+        fiveMin.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                fiveMinItemStateChanged(evt);
             }
         });
         getContentPane().add(fiveMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
@@ -238,28 +245,15 @@ public class OptionsPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BombTilesEnableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BombTilesEnableActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BombTilesEnableActionPerformed
-
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
-        
-        if(diff=="easy"){
-        MainGame easy = new MainGame();
-        easy.show();
-        easy.difficultySelect("easy");
+        // TODO add your handling code here:
+        MainGame starto = new MainGame();
+        starto.show();
+        starto.difficultySelect(diff);
+        starto.gameDuration = gameDuration;
+        starto.bombTilesFlag = bombEnable;
         dispose();
-     }else if(diff=="ave"){
-        MainGame ave = new MainGame();
-        ave.show();
-        ave.difficultySelect("average");
-        dispose();
-     }else if(diff=="hard"){
-        MainGame hard = new MainGame();
-        hard.show();
-        hard.difficultySelect("difficult");
-        dispose();
-     }
+
     }//GEN-LAST:event_okActionPerformed
 
     private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
@@ -276,16 +270,19 @@ public class OptionsPage extends javax.swing.JFrame {
     private void EasyItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EasyItemStateChanged
         // TODO add your handling code here:         
         diff= "easy";
+        BombTilesEnable.setEnabled(false);
     }//GEN-LAST:event_EasyItemStateChanged
 
     private void AverageItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AverageItemStateChanged
         // TODO add your handling code here:
-        diff= "ave";      
+        diff= "average";
+        BombTilesEnable.setEnabled(true);
     }//GEN-LAST:event_AverageItemStateChanged
 
     private void DifficultItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DifficultItemStateChanged
         // TODO add your handling code here:
-        diff= "hard";
+        diff= "difficult";
+        BombTilesEnable.setEnabled(true);
  
     }//GEN-LAST:event_DifficultItemStateChanged
 
@@ -293,18 +290,6 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_okMouseClicked
-
-    private void oneMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_oneMinActionPerformed
-
-    private void threeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_threeMinActionPerformed
-
-    private void fiveMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fiveMinActionPerformed
 
     private void yesTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesTimeActionPerformed
         // TODO add your handling code here:
@@ -318,6 +303,7 @@ public class OptionsPage extends javax.swing.JFrame {
                 oneMin.setEnabled(false);
                 threeMin.setEnabled(false);
                 fiveMin.setEnabled(false);
+                gameDuration = 0;
             }
         }
         
@@ -326,10 +312,45 @@ public class OptionsPage extends javax.swing.JFrame {
                 oneMin.setEnabled(true);
                 threeMin.setEnabled(true);
                 fiveMin.setEnabled(true);
+                if(oneMin.isSelected()){
+                    gameDuration = 60000;
+                }
+                if(threeMin.isSelected()){
+                    gameDuration = 180000;
+                }
+                if(fiveMin.isSelected()){
+                    gameDuration = 300000;
+                }
+                
             }
         }
        
     }//GEN-LAST:event_timeRestrictItemStateChanged
+
+    private void BombTilesEnableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BombTilesEnableItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == 1){
+            bombEnable = true;
+        }
+        else{
+            bombEnable = false;
+        }
+    }//GEN-LAST:event_BombTilesEnableItemStateChanged
+
+    private void oneMinItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_oneMinItemStateChanged
+        // TODO add your handling code here:
+        gameDuration = 60000;
+    }//GEN-LAST:event_oneMinItemStateChanged
+
+    private void threeMinItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_threeMinItemStateChanged
+        // TODO add your handling code here:
+        gameDuration = 180000;
+    }//GEN-LAST:event_threeMinItemStateChanged
+
+    private void fiveMinItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fiveMinItemStateChanged
+        // TODO add your handling code here:
+        gameDuration = 300000;        
+    }//GEN-LAST:event_fiveMinItemStateChanged
     
     
     /**
