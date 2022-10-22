@@ -38,6 +38,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     int incorrectTiles = 0;
     int tries = 0;
     int gameDuration = 0;
+    int[] intArray = new int[20]; 
     private boolean resetColorSelect = false;
     private boolean resetTextSelect = false;
     boolean tilesAreText = false;
@@ -48,10 +49,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     String[] board;
     Color[] Colorboard;
     Color[] color = {Color.blue,Color.green,Color.orange,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
-    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
-    String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
+    String[] Symbol = {"✫","(✉)","♛","♧","☼","☋","✞","☹"};
+    String[] Equation = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
     tryAgain tryAgain= new tryAgain();
+  
     
     public void durationTime(){
         if(gameDuration > 0){
@@ -292,7 +294,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         MainGame.setBackground(new java.awt.Color(153, 0, 102));
         MainGame.setForeground(new java.awt.Color(255, 102, 102));
         MainGame.setLayout(new java.awt.GridLayout(5, 5));
-        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 510));
+        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 670, 510));
 
         NumCorrMatchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumCorrMatchLabel.setText("Number of Correct Matches:");
