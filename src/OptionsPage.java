@@ -81,6 +81,11 @@ public class OptionsPage extends javax.swing.JFrame {
         noTime.setForeground(new java.awt.Color(255, 255, 255));
         noTime.setSelected(true);
         noTime.setText("No");
+        noTime.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                timeRestrictItemStateChanged(evt);
+            }
+        });
         getContentPane().add(noTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 51, -1));
 
         BombTilesEnable.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -313,6 +318,14 @@ public class OptionsPage extends javax.swing.JFrame {
                 oneMin.setEnabled(false);
                 threeMin.setEnabled(false);
                 fiveMin.setEnabled(false);
+            }
+        }
+        
+        if (evt.getSource() == yesTime) {
+            if (timeRestrictChoice == 1) {
+                oneMin.setEnabled(true);
+                threeMin.setEnabled(true);
+                fiveMin.setEnabled(true);
             }
         }
        
