@@ -37,7 +37,7 @@ public class tryAgain extends javax.swing.JFrame {
         exit.setBackground(new java.awt.Color(204, 204, 255));
         exit.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         exit.setForeground(new java.awt.Color(0, 51, 51));
-        exit.setText("Exit");
+        exit.setText("EXIT");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
