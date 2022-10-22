@@ -39,8 +39,9 @@ public class OptionsPage extends javax.swing.JFrame {
 
         btGrpRestrict = new javax.swing.ButtonGroup();
         difficulty = new javax.swing.ButtonGroup();
-        MovementRestrict = new javax.swing.JRadioButton();
-        MovementFree = new javax.swing.JRadioButton();
+        timeGrp = new javax.swing.ButtonGroup();
+        yesTime = new javax.swing.JRadioButton();
+        noTime = new javax.swing.JRadioButton();
         BombTilesEnable = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         Easy = new javax.swing.JRadioButton();
@@ -48,26 +49,39 @@ public class OptionsPage extends javax.swing.JFrame {
         Difficult = new javax.swing.JRadioButton();
         ok = new javax.swing.JButton();
         exit1 = new javax.swing.JButton();
+        oneMin = new javax.swing.JRadioButton();
+        threeMin = new javax.swing.JRadioButton();
+        fiveMin = new javax.swing.JRadioButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        MovementLabel = new javax.swing.JLabel();
+        MovementLabel2 = new javax.swing.JLabel();
         MovementLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btGrpRestrict.add(MovementRestrict);
-        MovementRestrict.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MovementRestrict.setForeground(new java.awt.Color(255, 255, 255));
-        MovementRestrict.setText("Yes");
-        getContentPane().add(MovementRestrict, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+        btGrpRestrict.add(yesTime);
+        yesTime.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        yesTime.setForeground(new java.awt.Color(255, 255, 255));
+        yesTime.setText("Yes");
+        yesTime.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                timeRestrictItemStateChanged(evt);
+            }
+        });
+        yesTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesTimeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(yesTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
-        btGrpRestrict.add(MovementFree);
-        MovementFree.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MovementFree.setForeground(new java.awt.Color(255, 255, 255));
-        MovementFree.setSelected(true);
-        MovementFree.setText("No");
-        getContentPane().add(MovementFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 51, -1));
+        btGrpRestrict.add(noTime);
+        noTime.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        noTime.setForeground(new java.awt.Color(255, 255, 255));
+        noTime.setSelected(true);
+        noTime.setText("No");
+        getContentPane().add(noTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 51, -1));
 
         BombTilesEnable.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         BombTilesEnable.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,7 +91,7 @@ public class OptionsPage extends javax.swing.JFrame {
                 BombTilesEnableActionPerformed(evt);
             }
         });
-        getContentPane().add(BombTilesEnable, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
+        getContentPane().add(BombTilesEnable, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, 50));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,12 +142,12 @@ public class OptionsPage extends javax.swing.JFrame {
                     .addComponent(Easy)
                     .addComponent(Difficult)
                     .addComponent(Average))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Easy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Average)
@@ -141,7 +155,7 @@ public class OptionsPage extends javax.swing.JFrame {
                 .addComponent(Difficult))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 130, 90));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 100, -1));
 
         ok.setBackground(new java.awt.Color(0, 255, 153));
         ok.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
@@ -169,19 +183,49 @@ public class OptionsPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 100, 30));
+
+        timeGrp.add(oneMin);
+        oneMin.setForeground(new java.awt.Color(255, 255, 255));
+        oneMin.setText("1 min");
+        oneMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oneMinActionPerformed(evt);
+            }
+        });
+        getContentPane().add(oneMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
+
+        timeGrp.add(threeMin);
+        threeMin.setForeground(new java.awt.Color(255, 255, 255));
+        threeMin.setText("3 mins");
+        threeMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                threeMinActionPerformed(evt);
+            }
+        });
+        getContentPane().add(threeMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+
+        timeGrp.add(fiveMin);
+        fiveMin.setForeground(new java.awt.Color(255, 255, 255));
+        fiveMin.setText("5 mins");
+        fiveMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fiveMinActionPerformed(evt);
+            }
+        });
+        getContentPane().add(fiveMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
-        MovementLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        MovementLabel.setForeground(new java.awt.Color(255, 255, 255));
-        MovementLabel.setText("movements?");
-        MovementLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(MovementLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 160, 20));
+        MovementLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        MovementLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        MovementLabel2.setText("How long?");
+        MovementLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        getContentPane().add(MovementLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 160, 50));
 
         MovementLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        MovementLabel1.setText("Restrict number of ");
+        MovementLabel1.setText("Restrict time?");
         MovementLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(MovementLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 160, 20));
+        getContentPane().add(MovementLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 160, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/optBG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
@@ -244,6 +288,35 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_okMouseClicked
+
+    private void oneMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_oneMinActionPerformed
+
+    private void threeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_threeMinActionPerformed
+
+    private void fiveMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveMinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fiveMinActionPerformed
+
+    private void yesTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yesTimeActionPerformed
+
+    private void timeRestrictItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_timeRestrictItemStateChanged
+        int timeRestrictChoice = evt.getStateChange();
+        
+        if (evt.getSource() == noTime) {
+            if (timeRestrictChoice == 1) {
+                oneMin.setEnabled(false);
+                threeMin.setEnabled(false);
+                fiveMin.setEnabled(false);
+            }
+        }
+       
+    }//GEN-LAST:event_timeRestrictItemStateChanged
     
     
     /**
@@ -291,16 +364,20 @@ public class OptionsPage extends javax.swing.JFrame {
     private javax.swing.JCheckBox BombTilesEnable;
     private javax.swing.JRadioButton Difficult;
     private javax.swing.JRadioButton Easy;
-    private javax.swing.JRadioButton MovementFree;
-    private javax.swing.JLabel MovementLabel;
     private javax.swing.JLabel MovementLabel1;
-    private javax.swing.JRadioButton MovementRestrict;
+    private javax.swing.JLabel MovementLabel2;
     private javax.swing.ButtonGroup btGrpRestrict;
     private javax.swing.ButtonGroup difficulty;
     private javax.swing.JButton exit1;
+    private javax.swing.JRadioButton fiveMin;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton noTime;
     private javax.swing.JButton ok;
+    private javax.swing.JRadioButton oneMin;
+    private javax.swing.JRadioButton threeMin;
+    private javax.swing.ButtonGroup timeGrp;
+    private javax.swing.JRadioButton yesTime;
     // End of variables declaration//GEN-END:variables
 }
