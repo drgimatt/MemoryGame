@@ -23,6 +23,7 @@ public class OptionsPage extends javax.swing.JFrame {
     
     public OptionsPage() {
         initComponents();
+        FrameCenter.centerJFrame(this);        
     }
     
     

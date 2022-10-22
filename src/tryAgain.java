@@ -15,6 +15,7 @@ public class tryAgain extends javax.swing.JFrame {
      */
     public tryAgain() {
         initComponents();
+        FrameCenter.centerJFrame(this);
     }
 
     /**
@@ -47,7 +48,7 @@ public class tryAgain extends javax.swing.JFrame {
         playAgain.setBackground(new java.awt.Color(0, 255, 153));
         playAgain.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         playAgain.setForeground(new java.awt.Color(0, 51, 51));
-        playAgain.setText("Play Again");
+        playAgain.setText("PLAY AGAIN");
         playAgain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playAgainActionPerformed(evt);

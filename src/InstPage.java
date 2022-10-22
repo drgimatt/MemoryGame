@@ -20,6 +20,7 @@ public class InstPage extends javax.swing.JFrame {
      */
     public InstPage() {
         initComponents();
+        FrameCenter.centerJFrame(this);
     }
 
     /**

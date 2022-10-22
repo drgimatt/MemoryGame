@@ -19,6 +19,7 @@ public class StartPage extends javax.swing.JFrame {
      */
     public StartPage() {
         initComponents();
+        FrameCenter.centerJFrame(this);        
     }
 
     /**
