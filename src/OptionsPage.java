@@ -29,12 +29,14 @@ public class OptionsPage extends javax.swing.JFrame {
     int gameDuration = 0;
     
     //MUSIC
-    BGM playmusic = new BGM();
+    
+    
     
     
     public OptionsPage() {
         initComponents();
-        FrameCenter.centerJFrame(this);        
+        FrameCenter.centerJFrame(this);
+        
     }
     
     
@@ -273,9 +275,9 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainGame starto = new MainGame();
         starto.show();
-        starto.difficultySelect(diff);
         starto.gameDuration = gameDuration;
         starto.bombTilesFlag = bombEnable;
+        starto.difficultySelect(diff);
         dispose();
 
     }//GEN-LAST:event_okActionPerformed
@@ -381,27 +383,27 @@ public class OptionsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_musicCBoxActionPerformed
 
     private void musicItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_musicItemStateChanged
-        int musicPlay = evt.getStateChange();
-        
-        if (evt.getSource() == musicCBox) {
-            if (musicPlay == 1) {
-                playmusic.play();
-            }
-        }
-        
-        if (evt.getSource() == musicCBox) {
-            if (musicPlay == 0) {
-                try {
-                    playmusic.stop();
-                } catch (UnsupportedAudioFileException ex) {
-                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (LineUnavailableException ex) {
-                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+//        int musicPlay = evt.getStateChange();
+//                try{
+//            BGM playmusic = new BGM();
+//        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+//                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//        if (evt.getSource() == musicCBox) {
+//            if (musicPlay == 1) {
+//                playmusic.play();
+//            }
+//        }
+//        
+//        if (evt.getSource() == musicCBox) {
+//            if (musicPlay == 0) {
+//                try {
+//                    playmusic.stop();
+//                } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+//                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
     }//GEN-LAST:event_musicItemStateChanged
     
     
