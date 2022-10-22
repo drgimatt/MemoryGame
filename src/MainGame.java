@@ -1,6 +1,5 @@
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,7 +9,9 @@ import java.awt.event.MouseListener;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.util.Timer;
 import javax.swing.UIManager;
+import java.util.TimerTask;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,6 +22,7 @@ import javax.swing.UIManager;
  *
  * @author boxro
  */
+
 public class MainGame extends javax.swing.JFrame implements MouseListener{
 
     /**
@@ -35,6 +37,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     int correctTiles = 0;
     int incorrectTiles = 0;
     int tries = 0;
+    int gameDuration = 0;
     private boolean resetColorSelect = false;
     private boolean resetTextSelect = false;
     boolean tilesAreText = false;
@@ -48,7 +51,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
-    Color resp [] = new Color[40];
+    
+    
     public void difficultySelect(String difficulty){
         if(difficulty == "easy"){
             setUpGameColor();
@@ -93,17 +97,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 		
 		}
         
-        for (int i = 0; i < length; i++){
-            resp[i] = color[i];
-        }
-
         for(int i=0;i<length;i++){
             for(int z=0;z<2;z++){
 		while(true){	
 			int y = randomGenerator.nextInt(length*2);
 			if(Colorboard[y]==null){
-			btn[y].setBackground(resp[i]);
-                        Colorboard[y]=resp[i];
+			btn[y].setBackground(color[i]);
+                        Colorboard[y]=color[i];
 			break;
 			}
 		}
