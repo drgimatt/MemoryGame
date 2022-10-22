@@ -23,7 +23,7 @@ import java.util.TimerTask;
  * @author boxro
  */
 
-public class MainGame extends javax.swing.JFrame implements MouseListener{
+public class MainGame extends javax.swing.JFrame implements MouseListener {
 
     /**
      * Creates new form OptionsPage
@@ -51,8 +51,16 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
+    tryAgain tryAgain= new tryAgain();
     
-    
+    public void durationTime(){
+        if(gameDuration > 0){
+        TimerTask task = new endGame(this,tryAgain);
+        Timer timer = new Timer();
+        timer.schedule(task, gameDuration);
+        }
+    }
+
     public void difficultySelect(String difficulty){
         if(difficulty == "easy"){
             setUpGameColor();
@@ -79,6 +87,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void setUpGameColor(){
         initializeStats();
+        //durationTime();
         firstSelected = 40;
         secondSelected = 40;
         tilesAreText = false;
@@ -440,7 +449,6 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 
     private void endGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endGameActionPerformed
         // TODO add your handling code here:
-        tryAgain tryAgain= new tryAgain();
         tryAgain.show();
         dispose();
     }//GEN-LAST:event_endGameActionPerformed
@@ -612,4 +620,9 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     public void mouseExited(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
+    
+    
+    
 }

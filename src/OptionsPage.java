@@ -96,7 +96,7 @@ public class OptionsPage extends javax.swing.JFrame {
                 BombTilesEnableActionPerformed(evt);
             }
         });
-        getContentPane().add(BombTilesEnable, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, 50));
+        getContentPane().add(BombTilesEnable, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, 50));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,13 +224,13 @@ public class OptionsPage extends javax.swing.JFrame {
         MovementLabel2.setForeground(new java.awt.Color(255, 255, 255));
         MovementLabel2.setText("How long?");
         MovementLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(MovementLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 160, 50));
+        getContentPane().add(MovementLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 70, 50));
 
         MovementLabel1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         MovementLabel1.setForeground(new java.awt.Color(255, 255, 255));
         MovementLabel1.setText("Restrict time?");
         MovementLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(MovementLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 160, 20));
+        getContentPane().add(MovementLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 80, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/optBG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
