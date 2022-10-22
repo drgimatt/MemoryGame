@@ -75,8 +75,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void setUpGameColor(){
         initializeStats();
-        firstSelected = 15;
-        secondSelected = 15;
+        firstSelected = 40;
+        secondSelected = 40;
         tilesAreText = false;
         tiles = 4;
         length = color.length;
@@ -212,7 +212,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 
     public boolean checkWinColor(){
         for(int i=0; i<totalTiles; i++){
-            if (Colorboard[i] != Colorboard[firstSelected]){
+            if (Colorboard[i].getRGB() != Colorboard[firstSelected].getRGB()){
             return false;
             } 
         }
@@ -225,6 +225,22 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         tryAgain tryAgain= new tryAgain();
         tryAgain.show();
         dispose();
+    }
+    
+    public void purgeColor(){
+                flipTileColor(secondSelected);
+                flipTileColor(firstSelected);
+                firstSelected = totalTiles;
+                secondSelected = 40;
+                purgatoryTest = false;
+    }
+    
+    public void purgeText(){
+                flipTileText(secondSelected);
+                flipTileText(firstSelected);
+                firstSelected = totalTiles;
+                secondSelected = 40;
+                purgatoryTest = false;
     }
     
     public MainGame() {
@@ -504,18 +520,10 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     Object source = e.getSource();
             
             if(purgatory){
-                flipTileText(secondSelected);
-                flipTileText(firstSelected);
-                firstSelected = totalTiles;
-                secondSelected = 40;
-                purgatory = false;
+                purgeText();
             }
              if(purgatoryTest){
-                flipTileColor(secondSelected);
-                flipTileColor(firstSelected);
-                firstSelected = totalTiles;
-                secondSelected = 40;
-                purgatoryTest = false;
+                purgeColor();
             }
             for (int i = 0; i < totalTiles; i++){
             
@@ -535,18 +543,23 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                                     purgatory = true;
                                     incorrectTiles++;
                                     tries++;
+                                    NumCorrMatch.setText(Integer.toString(correctTiles));
+                                    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                    NumClick.setText(Integer.toString(tries));                                    
                                 }
                                 else{
                                     board[i]="matched";
                                     board[firstSelected] = "matched";
                                     correctTiles++;
                                     tries++;
+                                    NumCorrMatch.setText(Integer.toString(correctTiles));
+                                    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                    NumClick.setText(Integer.toString(tries));
                                     checkWinText();
                                     firstSelected = totalTiles;
                                 }
                                 
-                            }
-                            
+                            }  
                     }
                 }
                 else{
@@ -554,35 +567,36 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                         hideAllTileColor();
                     }
                     else{
-
                         flipTileColor(i);
                         if(firstSelected >= totalTiles){
                             firstSelected = i;
                         }
-                            if((Colorboard[firstSelected] != Colorboard[i]) || (firstSelected == i)){
+                        else{
+                            if(Colorboard[i].getRGB() != Colorboard[firstSelected].getRGB()){
                                 secondSelected = i;
                                 purgatoryTest = true;
                                 incorrectTiles++;
                                 tries++;
+                                NumCorrMatch.setText(Integer.toString(correctTiles));
+                                NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                NumClick.setText(Integer.toString(tries));
                             }
                             else{
-                                Colorboard[i]= Color.yellow;
-                                Colorboard[firstSelected] = Color.yellow;
                                 correctTiles++;
                                 tries++;
+                                NumCorrMatch.setText(Integer.toString(correctTiles));
+                                NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                NumClick.setText(Integer.toString(tries));
+                                Colorboard[firstSelected] = Color.yellow;
+                                Colorboard[i] = Color.yellow;
                                 checkWinColor();
                                 firstSelected = totalTiles;
                             }
-                        System.out.println("i = " + Colorboard[i]);
-                        System.out.println("First = " + Colorboard[firstSelected]);
-                        System.out.println("Second = " + Colorboard[secondSelected]);
+                        }
                     }
                 }
             }
         }
-    NumCorrMatch.setText(Integer.toString(correctTiles));
-    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
-    NumClick.setText(Integer.toString(tries));
     }
 
     @Override
