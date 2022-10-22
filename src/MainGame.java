@@ -75,14 +75,15 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void setUpGameColor(){
         initializeStats();
-        firstSelected = totalTiles;
-        secondSelected = totalTiles;
+        firstSelected = 20;
+        secondSelected = 20;
         tilesAreText = false;
         tiles = 4;
         length = color.length;
+        Colorboard = new Color[40];
         totalTiles = (int) Math.pow(tiles, 2);
         MainGame.setLayout(new GridLayout(4,4,2,2));
-        Color Colorboard [] = new Color [totalTiles];
+        
         for(int i=0;i<totalTiles;i++){
 			btn[i] = new JButton("");
                         btn[i].setBackground(standard); 
@@ -107,8 +108,12 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 			}
 		}
             }		
-	}
-
+	           
+        }
+        for(int i =0; i < totalTiles; i++){
+        //System.out.println("x = " + Colorboard[i]);
+        }
+        testClass(5);
     }
     
     public void setUpGameText(String flag){
@@ -181,16 +186,15 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
         btn[i].setBackground(Colorboard[i]);
     }
 
-    public void flipTileColor(int i){
-                System.out.println(Colorboard[i]);
-//        if(Colorboard[i] != Colorboard[firstSelected]){
-//            if(btn[i].getBackground()== standard){
-//                showSpecificTileColor(i);
-//            }
-//            else{
-//                btn[i].setBackground(standard);
-//            }
-//        }
+    public void flipTileColor(int i){                       
+        if(Colorboard[i] != Colorboard[firstSelected]){
+            if(btn[i].getBackground()== standard){
+                showSpecificTileColor(i);
+            }
+            else{
+                btn[i].setBackground(standard);
+            }
+        }
     }
     
     public void hideAllTileColor(){
@@ -497,9 +501,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
+    public void testClass(int x){
+    System.out.println("w = " + Colorboard[x]);
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
     Object source = e.getSource();
+            
             if(purgatory){
                 flipTileText(secondSelected);
                 flipTileText(firstSelected);
@@ -515,7 +524,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                 purgatoryTest = false;
             }
             for (int i = 0; i < totalTiles; i++){
-            if (source == btn[i]){
+            
+            if (source == btn[i]){testClass(i);
                 if (tilesAreText == true){
                     if(showTilesInitial == true){
                         hideAllTileText();
@@ -546,6 +556,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                     }
                 }
                 else{
+                    System.out.println("z = " + Colorboard[i]);
                     if(showTilesInitial == true){
                         hideAllTileColor();
                     }
@@ -553,7 +564,9 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                         flipTileColor(i);
                         if(firstSelected >= totalTiles){
                             firstSelected = i;
-                        }
+                        }                        
+                        System.out.println(i);
+                        System.out.println(firstSelected);
                             if((Colorboard[firstSelected] != Colorboard[i]) || (firstSelected == i)){
                                 secondSelected = i;
                                 purgatoryTest = true;
@@ -561,7 +574,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                                 tries++;
                             }
                             else{
-                                board[i]=board[firstSelected];
+                                Colorboard[i]=Colorboard[firstSelected];
                                 correctTiles++;
                                 tries++;
                                 checkWinColor();
