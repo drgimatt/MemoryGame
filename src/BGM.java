@@ -44,7 +44,7 @@ public class BGM {
       
         try
         {
-            filePath = "sc/bgm.wav";
+            filePath = "src/bgm.wav";
             BGM audioPlayer = new BGM();
               
             audioPlayer.play();

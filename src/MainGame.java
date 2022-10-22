@@ -48,6 +48,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
+    Color resp [] = new Color[40];
     public void difficultySelect(String difficulty){
         if(difficulty == "easy"){
             setUpGameColor();
@@ -74,12 +75,12 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public void setUpGameColor(){
         initializeStats();
-        firstSelected = 20;
-        secondSelected = 20;
+        firstSelected = 15;
+        secondSelected = 15;
         tilesAreText = false;
         tiles = 4;
         length = color.length;
-        Colorboard = new Color[40];
+        Colorboard = new Color[20];
         totalTiles = (int) Math.pow(tiles, 2);
         MainGame.setLayout(new GridLayout(4,4,2,2));
         
@@ -91,14 +92,18 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
 			MainGame.add(btn[i]);
 		
 		}
+        
+        for (int i = 0; i < length; i++){
+            resp[i] = color[i];
+        }
 
         for(int i=0;i<length;i++){
             for(int z=0;z<2;z++){
 		while(true){	
 			int y = randomGenerator.nextInt(length*2);
 			if(Colorboard[y]==null){
-			btn[y].setBackground(color[i]);
-                        Colorboard[y]=color[i];
+			btn[y].setBackground(resp[i]);
+                        Colorboard[y]=resp[i];
 			break;
 			}
 		}
@@ -187,17 +192,6 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
             }
         }
     }
-
-    public void flipTileColorAlter(int i){                       
-        if(Colorboard[i] != Colorboard[firstSelected]){
-            if(btn[i].getBackground()== standard){
-                showSpecificTileColor(i);
-            }
-            else{
-                btn[i].setBackground(standard);
-            }
-        }
-    }
     
     public void hideAllTileColor(){
         for(int i=0; i<totalTiles; i++){
@@ -233,6 +227,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     
     public MainGame() {
         initComponents();
+        //difficultySelect("difficult");
     }
 
     /**
@@ -502,10 +497,6 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
-    public void testClass(int x){
-    System.out.println("w = " + Colorboard[x]);
-    }
-    
     @Override
     public void mouseClicked(MouseEvent e) {
     Object source = e.getSource();
@@ -514,14 +505,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                 flipTileText(secondSelected);
                 flipTileText(firstSelected);
                 firstSelected = totalTiles;
-                secondSelected = 20;
+                secondSelected = 40;
                 purgatory = false;
             }
              if(purgatoryTest){
                 flipTileColor(secondSelected);
                 flipTileColor(firstSelected);
                 firstSelected = totalTiles;
-                secondSelected = 39;
+                secondSelected = 40;
                 purgatoryTest = false;
             }
             for (int i = 0; i < totalTiles; i++){
@@ -531,14 +522,12 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                     if(showTilesInitial == true){
                         hideAllTileText();
                     }
-                    else{System.out.println("i = "+i);
+                    else{
                         flipTileText(i);
                         if(firstSelected >= totalTiles){
                             firstSelected = i;
                             }
                             else{
-                                                    System.out.println("First Selected: " +firstSelected);
-                        System.out.println("Second Selected: " +secondSelected);
                                 if((board[firstSelected] != board[i]) || (firstSelected == i)){
                                     secondSelected = i;
                                     purgatory = true;
@@ -563,27 +552,28 @@ public class MainGame extends javax.swing.JFrame implements MouseListener{
                         hideAllTileColor();
                     }
                     else{
+
                         flipTileColor(i);
                         if(firstSelected >= totalTiles){
                             firstSelected = i;
-                            System.out.println("dumaan siya dito");
-                        }                        
+                        }
                             if((Colorboard[firstSelected] != Colorboard[i]) || (firstSelected == i)){
-                                System.out.println("nandito lang siya sa if");
                                 secondSelected = i;
                                 purgatoryTest = true;
                                 incorrectTiles++;
                                 tries++;
                             }
                             else{
-                                System.out.println("umabot na siya dito sa else");
-                                Colorboard[i]=Color.yellow;
-                                Colorboard[firstSelected]=Color.yellow;
+                                Colorboard[i]= Color.yellow;
+                                Colorboard[firstSelected] = Color.yellow;
                                 correctTiles++;
                                 tries++;
                                 checkWinColor();
                                 firstSelected = totalTiles;
-                            }                        
+                            }
+                        System.out.println("i = " + Colorboard[i]);
+                        System.out.println("First = " + Colorboard[firstSelected]);
+                        System.out.println("Second = " + Colorboard[secondSelected]);
                     }
                 }
             }
