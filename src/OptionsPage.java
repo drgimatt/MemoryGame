@@ -1,6 +1,11 @@
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.event.ItemEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -22,6 +27,10 @@ public class OptionsPage extends javax.swing.JFrame {
     String diff = "easy";
     boolean bombEnable = false;
     int gameDuration = 0;
+    
+    //MUSIC
+    BGM playmusic = new BGM();
+    
     
     public OptionsPage() {
         initComponents();
@@ -54,6 +63,7 @@ public class OptionsPage extends javax.swing.JFrame {
         oneMin = new javax.swing.JRadioButton();
         threeMin = new javax.swing.JRadioButton();
         fiveMin = new javax.swing.JRadioButton();
+        musicCBox = new javax.swing.JCheckBox();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         MovementLabel2 = new javax.swing.JLabel();
         MovementLabel1 = new javax.swing.JLabel();
@@ -225,6 +235,20 @@ public class OptionsPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(fiveMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, -1, -1));
+
+        musicCBox.setForeground(new java.awt.Color(255, 255, 255));
+        musicCBox.setText("Play Music");
+        musicCBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                musicItemStateChanged(evt);
+            }
+        });
+        musicCBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                musicCBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(musicCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
         MovementLabel2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -237,7 +261,7 @@ public class OptionsPage extends javax.swing.JFrame {
         MovementLabel1.setForeground(new java.awt.Color(255, 255, 255));
         MovementLabel1.setText("Restrict time?");
         MovementLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(MovementLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 80, 20));
+        getContentPane().add(MovementLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 90, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/optBG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
@@ -351,6 +375,34 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         gameDuration = 300000;        
     }//GEN-LAST:event_fiveMinItemStateChanged
+
+    private void musicCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicCBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_musicCBoxActionPerformed
+
+    private void musicItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_musicItemStateChanged
+        int musicPlay = evt.getStateChange();
+        
+        if (evt.getSource() == musicCBox) {
+            if (musicPlay == 1) {
+                playmusic.play();
+            }
+        }
+        
+        if (evt.getSource() == musicCBox) {
+            if (musicPlay == 0) {
+                try {
+                    playmusic.stop();
+                } catch (UnsupportedAudioFileException ex) {
+                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_musicItemStateChanged
     
     
     /**
@@ -407,6 +459,7 @@ public class OptionsPage extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JCheckBox musicCBox;
     private javax.swing.JRadioButton noTime;
     private javax.swing.JButton ok;
     private javax.swing.JRadioButton oneMin;
