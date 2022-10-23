@@ -3,16 +3,22 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.util.Timer;
 import javax.swing.UIManager;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -60,14 +66,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     String ans [] = new String[40];
     tryAgain tryAgain= new tryAgain();
     
-//    public void durationTime(){
-//        if(gameDuration > 0){
-//        TimerTask task = new endGame(this,tryAgain);
-//        Timer timer = new Timer();
-//        timer.schedule(task, gameDuration);
-//        }
-//    }
-
+    public void backgroundScale() throws MalformedURLException{
+            final ImageIcon originalImage = new javax.swing.ImageIcon(getClass().getResource("/Images/mainBG.png"));
+            final ImageIcon scaledImage = new ImageIcon(originalImage.getImage()
+                .getScaledInstance(920, 610, Image.SCALE_SMOOTH));
+            Background.setIcon(scaledImage);
+    }
+    
     public void difficultySelect(String difficulty){
         if(difficulty == "easy"){
             setUpGameColor();
@@ -107,6 +112,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                         btn[i].setBackground(standard); 
        			btn[i].setEnabled(true);
                         btn[i].addMouseListener(this);
+                        btn[i].setRolloverEnabled(true);
 			MainGame.add(btn[i]);
 		
 		}
@@ -273,9 +279,10 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                 resetTextSelect = false;
     }
     
-    public MainGame() {
+    public MainGame() throws MalformedURLException {
         initComponents();
         FrameCenter.centerJFrame(this);
+        backgroundScale();
     }
 
     /**
@@ -298,7 +305,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         endGame = new javax.swing.JButton();
         NumClickLabel = new javax.swing.JLabel();
         TimeLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
         NewGame = new javax.swing.JMenuItem();
@@ -308,12 +315,18 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         About = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(920, 610));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MainGame.setBackground(new java.awt.Color(153, 0, 102));
+        MainGame.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         MainGame.setForeground(new java.awt.Color(255, 102, 102));
+        MainGame.setOpaque(false);
         MainGame.setLayout(new java.awt.GridLayout(5, 5));
-        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 510));
+        getContentPane().add(MainGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 650, 500));
+
+        Stats.setEnabled(false);
+        Stats.setOpaque(false);
 
         NumCorrMatchLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumCorrMatchLabel.setText("Number of Correct Matches:");
@@ -399,10 +412,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                 .addGap(37, 37, 37))
         );
 
-        getContentPane().add(Stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 15, 230, 470));
+        getContentPane().add(Stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, 230, 470));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mainBG.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 510));
+        Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Background.setMaximumSize(new java.awt.Dimension(661, 610));
+        Background.setMinimumSize(new java.awt.Dimension(661, 610));
+        Background.setPreferredSize(new java.awt.Dimension(661, 610));
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 570));
 
         Game.setText("Game");
 
@@ -515,7 +531,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         UIManager.setLookAndFeel( new FlatDarkLaf() );
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainGame().setVisible(true);
+                try {
+                    new MainGame().setVisible(true);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(MainGame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         } catch( Exception ex ) {
@@ -525,6 +545,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem About;
+    private javax.swing.JLabel Background;
     private javax.swing.JMenu Game;
     private javax.swing.JMenu Help;
     private javax.swing.JMenuItem Instruction;
@@ -541,7 +562,6 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     private javax.swing.JLabel Time;
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JButton endGame;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 
@@ -676,7 +696,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
