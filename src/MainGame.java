@@ -640,7 +640,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             firstSelected = i;
                             }
                             else{
-                                if((board[firstSelected] != board[i]) || (firstSelected == i)){
+                            if((board[firstSelected] == "matched") || (board[i] == "matched")){
+                                    secondSelected = i;
+                                    resetTextSelect = true;
+                                    NumCorrMatch.setText(Integer.toString(correctTiles));
+                                    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                    NumClick.setText(Integer.toString(tries));                                    
+                                } 
+                            else if((board[firstSelected] != board[i]) || (firstSelected == i)){
                                     secondSelected = i;
                                     resetTextSelect = true;
                                     incorrectTiles++;
