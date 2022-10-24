@@ -55,8 +55,8 @@ public class AboutPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        StartPage start= new StartPage();
-        start.show();
+        //StartPage start= new StartPage();
+        //start.show();
         dispose();
     }//GEN-LAST:event_exitActionPerformed
 
