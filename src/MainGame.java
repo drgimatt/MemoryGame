@@ -46,26 +46,30 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     int incorrectTiles = 0;
     int tries = 0;
     int gameDuration = 0;
-    long time = 0;
+    int time = 0;
+    int sec = 0;
+    int min = 0;
+    boolean timerOn = false;
     boolean bombTilesFlag = false;
     private boolean resetColorSelect = false;
     private boolean resetTextSelect = false;
     boolean tilesAreText = false;
     boolean showTilesInitial = true;
-    Font font;
     Color standard = new Color(220, 220, 220);
     Random randomGenerator = new Random();
     JButton btn[] = new JButton[50];
     String[] board;
     Color[] Colorboard;
     Color[] color = {Color.blue,Color.green,Color.orange,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
-    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","ฅ^•ﻌ•^ฅ","o(^▽^)o"};
+    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","^•ﻌ•^","o(^▽^)o"};
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "W = Fs", "y=mx+b", "D = b²-4ac", "A = L x W", "FC = mv²/r","C = Q/V","V =1/3 πr 2h","Ax + By = C","S = 4πr²","a = π * r²","𝒂(𝒙 − 𝒉)²+ 𝒌","i^2= −1","F - E + V = 2"};
     String[] symbolsBomb ={"💣","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","˙ᘧ ͜ ˙","o(^▽^)o"};
     String[] equationsBomb = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "💣", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
     tryAgain tryAgain= new tryAgain();
-    
+    TimerTask task = new endGame(this,tryAgain);
+    TimerTask clock = new timeRemain();
+    Timer timer = new Timer();
     public void backgroundScale() throws MalformedURLException{
             final ImageIcon originalImage = new javax.swing.ImageIcon(getClass().getResource("/Images/mainBG.png"));
             final ImageIcon scaledImage = new ImageIcon(originalImage.getImage()
@@ -83,14 +87,13 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
            
     }
     
-    public void durationTime(){
-        if(gameDuration > 0){
-        TimerTask task = new endGame(this,tryAgain);
-        TimerTask clock = new timeRemain();
-        Timer timer = new Timer();
+    public void durationTime(boolean timeRun){
+        if(timeRun == true){
         timer.schedule(clock, 1000, 1000);
         timer.schedule(task, gameDuration);
-        
+        }
+        else{
+        timer.cancel();
         }
     }    
     
@@ -98,37 +101,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
 
         @Override
         public void run() {
-            
             time--;
-//            int S = time % 60;
-//            int H = time / 60;
-//            int M = H % 60;
-//            H = H / 60;
-//            Time.setText(H + ":" + M + ":" + S);
-            
-//            int S = (int) (time % 60);
-//            int M = (int) ((time / 60) % 60);
-//            int H = (int) ((time / (60*60)) % 24);
-//            Time.setText(H + ":" + M + ":" + S);            
-
-              long s = time % 60;
-              long m = (time / 60) % 60;
-              long h = (time / 3600) % 24;
-              String timeConverted = String.format("%02d:%02d:%02d",h,m,s);
-              Time.setText(timeConverted);
-
-//            String timeConverted = String.format("%02d:%02d:%02d", 
-//            TimeUnit.MILLISECONDS.toHours(time),
-//            TimeUnit.MILLISECONDS.toMinutes(time) -  
-//            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)), // The change is in this line
-//            TimeUnit.MILLISECONDS.toSeconds(time) - 
-//            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
-//            Time.setText(timeConverted);
+            sec = time % 60;
+            min = (time / 60000) % 60;  
+            Time.setText(min + ":" + sec);
             
         }
         
     }
-    
     
     
     public void initializeStats(){
@@ -144,7 +124,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     
     public void setUpGameColor(){
         initializeStats();
-        durationTime();
+        durationTime(timerOn);
         firstSelected = 40;
         secondSelected = 40;
         tilesAreText = false;
@@ -181,7 +161,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     
     public void setUpGameText(String flag){
         initializeStats();
-        durationTime();
+        durationTime(timerOn);
         tilesAreText = true;
         
         if(flag == "average") {
@@ -306,6 +286,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     
     public void playerWon(){
         //JOptionPane.showMessageDialog(null,"Congratulations. You won!","WINNER",JOptionPane.PLAIN_MESSAGE);
+        durationTime(false);
         wonTryAgain tryAgain= new wonTryAgain();
         tryAgain.show();
         dispose();
@@ -542,6 +523,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     private void endGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endGameActionPerformed
         // TODO add your handling code here:
         tryAgain.show();
+        durationTime(false);
         dispose();
     }//GEN-LAST:event_endGameActionPerformed
 

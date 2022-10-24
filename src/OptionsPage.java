@@ -275,6 +275,12 @@ public class OptionsPage extends javax.swing.JFrame {
         starto.show();
         starto.gameDuration = gameDuration;
         starto.time = gameDuration;
+        if(gameDuration > 0){
+        starto.timerOn = true;
+        }
+        else{
+        starto.timerOn = false;
+        }
         starto.bombTilesFlag = bombEnable;
         starto.difficultySelect(diff);
         dispose();
