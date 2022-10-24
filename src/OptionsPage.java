@@ -271,7 +271,7 @@ public class OptionsPage extends javax.swing.JFrame {
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         // TODO add your handling code here:
       try{
-        MainGameDebug starto = new MainGameDebug();
+        MainGame starto = new MainGame();
         starto.show();
         starto.gameDuration = gameDuration;
         starto.bombTilesFlag = bombEnable;
