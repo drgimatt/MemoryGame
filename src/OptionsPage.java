@@ -274,6 +274,7 @@ public class OptionsPage extends javax.swing.JFrame {
         MainGame starto = new MainGame();
         starto.show();
         starto.gameDuration = gameDuration;
+        starto.time = gameDuration;
         starto.bombTilesFlag = bombEnable;
         starto.difficultySelect(diff);
         dispose();

@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import java.util.Timer;
 import javax.swing.UIManager;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -45,6 +46,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     int incorrectTiles = 0;
     int tries = 0;
     int gameDuration = 0;
+    long time = 0;
     boolean bombTilesFlag = false;
     private boolean resetColorSelect = false;
     private boolean resetTextSelect = false;
@@ -84,10 +86,50 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     public void durationTime(){
         if(gameDuration > 0){
         TimerTask task = new endGame(this,tryAgain);
+        TimerTask clock = new timeRemain();
         Timer timer = new Timer();
+        timer.schedule(clock, 1000, 1000);
         timer.schedule(task, gameDuration);
+        
         }
     }    
+    
+    public class timeRemain extends TimerTask{
+
+        @Override
+        public void run() {
+            
+            time--;
+//            int S = time % 60;
+//            int H = time / 60;
+//            int M = H % 60;
+//            H = H / 60;
+//            Time.setText(H + ":" + M + ":" + S);
+            
+//            int S = (int) (time % 60);
+//            int M = (int) ((time / 60) % 60);
+//            int H = (int) ((time / (60*60)) % 24);
+//            Time.setText(H + ":" + M + ":" + S);            
+
+              long s = time % 60;
+              long m = (time / 60) % 60;
+              long h = (time / 3600) % 24;
+              String timeConverted = String.format("%02d:%02d:%02d",h,m,s);
+              Time.setText(timeConverted);
+
+//            String timeConverted = String.format("%02d:%02d:%02d", 
+//            TimeUnit.MILLISECONDS.toHours(time),
+//            TimeUnit.MILLISECONDS.toMinutes(time) -  
+//            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)), // The change is in this line
+//            TimeUnit.MILLISECONDS.toSeconds(time) - 
+//            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
+//            Time.setText(timeConverted);
+            
+        }
+        
+    }
+    
+    
     
     public void initializeStats(){
         firstSelected = 40;
@@ -373,7 +415,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         NumClickLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TimeLabel.setText("Elapsed Time:");
+        TimeLabel.setText("Time Remaining:");
         TimeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout StatsLayout = new javax.swing.GroupLayout(Stats);
@@ -389,7 +431,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                     .addComponent(NumIncorrMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(endGame, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NumClick, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Time, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Time, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NumClickLabel)
                     .addComponent(TimeLabel))
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -638,14 +680,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             firstSelected = i;
                             }
                             else{
-                            if((board[firstSelected] == "matched") || (board[i] == "matched")){
-                                    secondSelected = i;
-                                    resetTextSelect = true;
-                                    NumCorrMatch.setText(Integer.toString(correctTiles));
-                                    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
-                                    NumClick.setText(Integer.toString(tries));                                    
-                                } 
-                            else if((board[firstSelected] != board[i]) || (firstSelected == i)){
+                                if((board[firstSelected] != board[i]) || (firstSelected == i)){
                                     secondSelected = i;
                                     resetTextSelect = true;
                                     incorrectTiles++;

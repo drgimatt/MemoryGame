@@ -132,7 +132,7 @@
                       <Component id="NumIncorrMatch" alignment="2" min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="endGame" alignment="2" min="-2" pref="140" max="-2" attributes="0"/>
                       <Component id="NumClick" alignment="2" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="Time" alignment="2" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="Time" alignment="2" min="-2" pref="102" max="-2" attributes="0"/>
                       <Component id="NumClickLabel" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="TimeLabel" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -244,7 +244,7 @@
         <Component class="javax.swing.JLabel" name="TimeLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Elapsed Time:"/>
+            <Property name="text" type="java.lang.String" value="Time Remaining:"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
