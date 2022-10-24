@@ -396,9 +396,9 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         NumClick.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumClick.setText("0");
 
-        Time.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        Time.setFont(new java.awt.Font("Segoe UI Black", 1, 34)); // NOI18N
         Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Time.setText("0");
+        Time.setText("N/A");
 
         endGame.setBackground(new java.awt.Color(204, 204, 255));
         endGame.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
