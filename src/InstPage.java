@@ -48,15 +48,14 @@ public class InstPage extends javax.swing.JFrame {
         });
         getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/instBG.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/instBG.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        StartPage start= new StartPage();
-        start.show();
+      
         dispose();
     }//GEN-LAST:event_exitActionPerformed
 

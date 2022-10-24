@@ -61,7 +61,7 @@ public class StartPage extends javax.swing.JFrame {
         });
         getContentPane().add(help, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 100, 40));
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sBG.png"))); // NOI18N
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sBG.png"))); // NOI18N
         getContentPane().add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
         pack();

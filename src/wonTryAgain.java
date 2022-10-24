@@ -55,7 +55,7 @@ public class wonTryAgain extends javax.swing.JFrame {
         });
         getContentPane().add(playAgain, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 120, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wonBG.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wonBG.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
