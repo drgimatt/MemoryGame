@@ -587,7 +587,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
             
             if (source == btn[i]){
                 if (tilesAreText == true){
-                    if(bombTilesFlag){
+                    if(bombTilesFlag){//Word Bomb Logic
                     if(showTilesInitial == true){
                         hideAllTileText();
                     }
@@ -630,7 +630,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             }                    
                     }
                     }
-                    else{
+                    else{ //Word Normal Logic
                     if(showTilesInitial == true){
                         hideAllTileText();
                     }
@@ -664,8 +664,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             }                    
                     }                    
                     }
-                }
-                else{
+                } 
+                else{// Color Logic
                     if(showTilesInitial == true){
                         hideAllTileColor();
                     }
@@ -675,7 +675,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             firstSelected = i;
                         }
                         else{
-                            if(Colorboard[i].getRGB() != Colorboard[firstSelected].getRGB()){
+                            if((Colorboard[i].getRGB() == Color.yellow.getRGB()) || (Colorboard[firstSelected].getRGB() == Color.yellow.getRGB())){
+                                secondSelected = i;
+                                resetColorSelect = true;
+                                NumCorrMatch.setText(Integer.toString(correctTiles));
+                                NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                NumClick.setText(Integer.toString(tries));
+                            }
+                            else if(Colorboard[i].getRGB() != Colorboard[firstSelected].getRGB() || (i == firstSelected)){
                                 secondSelected = i;
                                 resetColorSelect = true;
                                 incorrectTiles++;
@@ -699,6 +706,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                     }
                 }
             }
+            
         }
     }
 
