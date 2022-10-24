@@ -78,7 +78,6 @@ public class StartPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         InstPage help = new InstPage();
         help.show();
-        dispose();
     }//GEN-LAST:event_helpActionPerformed
 
     /**

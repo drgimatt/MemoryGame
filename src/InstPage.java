@@ -55,7 +55,7 @@ public class InstPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-      
+
         dispose();
     }//GEN-LAST:event_exitActionPerformed
 
