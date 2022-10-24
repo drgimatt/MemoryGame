@@ -566,7 +566,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
     Object source = e.getSource();
             
             if(resetTextSelect){
@@ -695,7 +695,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
