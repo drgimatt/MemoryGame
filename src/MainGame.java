@@ -57,11 +57,11 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     String[] board;
     Color[] Colorboard;
     Color[] color = {Color.blue,Color.green,Color.orange,Color.black,Color.pink,Color.red,Color.magenta,Color.cyan};
-    String[] SymbolFranc = {"✫","(✉)","♛","♧","☼","☋","✞","☹"};
+    //String[] SymbolFranc = {"✫","(✉)","♛","♧","☼","☋","✞","☹"};
     String[] EquationFranc = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
-    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
-    String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "a³+b³ = (a+b)(a²-ab+b²)", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
-    String[] symbolsBomb ={"💣","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","ƪ(˘⌣˘)ʃ","(^・ω・^ )","~~>_<~~","o(^▽^)o"};
+    String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","ฅ^•ﻌ•^ฅ","o(^▽^)o"};
+    String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "W = Fs", "y=mx+b", "D = b²-4ac", "A = L x W", "FC = mv²/r","C = Q/V","V =1/3 πr 2h","Ax + By = C","S = 4πr²","a = π * r²","𝒂(𝒙 − 𝒉)²+ 𝒌","i^2= −1","F - E + V = 2"};
+    String[] symbolsBomb ={"💣","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","˙ᘧ ͜ ˙","o(^▽^)o"};
     String[] equationsBomb = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "💣", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
     tryAgain tryAgain= new tryAgain();
