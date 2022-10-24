@@ -69,6 +69,7 @@ public class OptionsPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btGrpRestrict.add(yesTime);
@@ -188,18 +189,18 @@ public class OptionsPage extends javax.swing.JFrame {
                 okActionPerformed(evt);
             }
         });
-        getContentPane().add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 90, 30));
+        getContentPane().add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 90, 30));
 
         exit1.setBackground(new java.awt.Color(255, 51, 153));
         exit1.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         exit1.setForeground(new java.awt.Color(255, 204, 204));
-        exit1.setText("CANCEL");
+        exit1.setText("BACK");
         exit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exit1ActionPerformed(evt);
             }
         });
-        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 100, 30));
+        getContentPane().add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 100, 30));
 
         timeGrp.add(oneMin);
         oneMin.setForeground(new java.awt.Color(255, 255, 255));
