@@ -28,9 +28,6 @@ public class OptionsPage extends javax.swing.JFrame {
     boolean bombEnable = false;
     int gameDuration = 0;
     
-    //MUSIC
-    
-    
     
     
     public OptionsPage() {
@@ -388,11 +385,7 @@ public class OptionsPage extends javax.swing.JFrame {
 
     private void musicItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_musicItemStateChanged
 //        int musicPlay = evt.getStateChange();
-//                try{
-//            BGM playmusic = new BGM();
-//        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-//                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
-//                }
+//               
 //        if (evt.getSource() == musicCBox) {
 //            if (musicPlay == 1) {
 //                playmusic.play();
@@ -401,11 +394,17 @@ public class OptionsPage extends javax.swing.JFrame {
 //        
 //        if (evt.getSource() == musicCBox) {
 //            if (musicPlay == 0) {
+//     
 //                try {
 //                    playmusic.stop();
-//                } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+//                } catch (UnsupportedAudioFileException ex) {
+//                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (LineUnavailableException ex) {
 //                    Logger.getLogger(OptionsPage.class.getName()).log(Level.SEVERE, null, ex);
 //                }
+//                
 //            }
 //        }
     }//GEN-LAST:event_musicItemStateChanged
