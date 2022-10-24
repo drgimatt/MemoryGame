@@ -392,17 +392,7 @@ public class OptionsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_musicCBoxActionPerformed
 
     private void musicItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_musicItemStateChanged
-//        int musicPlay = evt.getStateChange();
-//        BGMTest playmusic = new BGMTest();       
-//        if (evt.getSource() == musicCBox) {
-//            if (musicPlay == 1) {
-//                playmusic.play();
-//            }
-//            else if (musicPlay == 0){
-//                playmusic.stop();
-//            }
-//        }
-//        
+      
     }//GEN-LAST:event_musicItemStateChanged
     
     
