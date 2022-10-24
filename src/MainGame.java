@@ -80,9 +80,16 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         else{
             setUpGameText(difficulty);
         }
-        
-            
+           
     }
+    
+    public void durationTime(){
+        if(gameDuration > 0){
+        TimerTask task = new endGame(this,tryAgain);
+        Timer timer = new Timer();
+        timer.schedule(task, gameDuration);
+        }
+    }    
     
     public void initializeStats(){
         firstSelected = 40;
@@ -97,7 +104,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     
     public void setUpGameColor(){
         initializeStats();
-        //durationTime();
+        durationTime();
         firstSelected = 40;
         secondSelected = 40;
         tilesAreText = false;
@@ -133,7 +140,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     }
     
     public void setUpGameText(String flag){
-        initializeStats();    
+        initializeStats();
+        durationTime();
         tilesAreText = true;
         
         if(flag == "average") {
