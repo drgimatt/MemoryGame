@@ -81,11 +81,6 @@ public class OptionsPage extends javax.swing.JFrame {
                 timeRestrictItemStateChanged(evt);
             }
         });
-        yesTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yesTimeActionPerformed(evt);
-            }
-        });
         getContentPane().add(yesTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, -1));
 
         btGrpRestrict.add(noTime);
@@ -179,11 +174,6 @@ public class OptionsPage extends javax.swing.JFrame {
         ok.setFont(new java.awt.Font("Arial Black", 0, 13)); // NOI18N
         ok.setForeground(new java.awt.Color(0, 51, 51));
         ok.setText("OK");
-        ok.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                okMouseClicked(evt);
-            }
-        });
         ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okActionPerformed(evt);
@@ -307,15 +297,6 @@ public class OptionsPage extends javax.swing.JFrame {
  
     }//GEN-LAST:event_DifficultItemStateChanged
 
-    private void okMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_okMouseClicked
-
-    private void yesTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesTimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yesTimeActionPerformed
-
     private void timeRestrictItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_timeRestrictItemStateChanged
         int timeRestrictChoice = evt.getStateChange();
         
@@ -372,6 +353,7 @@ public class OptionsPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         gameDuration = 300000;        
     }//GEN-LAST:event_fiveMinItemStateChanged
+    // TODO add your handling code here:
 
     private void musicCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicCBoxActionPerformed
         // TODO add your handling code here:
