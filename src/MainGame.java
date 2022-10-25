@@ -64,7 +64,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
     String[] symbols = {"(￣y▽,￣)╭ ","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","^•ﻌ•^","o(^▽^)o"};
     String[] equations = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "W = Fs", "y=mx+b", "D = b²-4ac", "A = L x W", "FC = mv²/r","C = Q/V","V =1/3 πr 2h","Ax + By = C","S = 4πr²","a = π * r²","𝒂(𝒙 − 𝒉)²+ 𝒌","i^2= −1","F - E + V = 2"};
     String[] symbolsBomb ={"💣","(┬┬﹏┬┬)","(￢︿̫̿￢☆)","`(*>﹏<*)′","(づ ᴗ _ᴗ)づ","(^・ω・^ )","˙ᘧ ͜ ˙","o(^▽^)o"};
-    String[] equationsBomb = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "a²-b² = (a+b)(a-b)", "💣", "D = b²-4ac", "A= L x W", "(a-b)² = a²-2ab+b²","x = −b ± √b²-4ac/2a","V =1/3 πr 2h","m = y2 – y1 / x2 – x1","S = 4 x π x r 2","a = π * r²","logxy = logx + logy","i^2= −1","F - E + V = 2"};
+    String[] equationsBomb = {"F=ma","E=m²", "a²+b²=c²", "log(100)=2", "2 x sin30°", "W = Fs", "y=mx+b", "D = b²-4ac", "A = L x W", "FC = mv²/r","C = Q/V","V =1/3 πr 2h","Ax + By = C","S = 4πr²","a = π * r²","💣","i^2= −1","F - E + V = 2"};
     String ans [] = new String[40];
     tryAgain tryAgain= new tryAgain();
     TimerTask task = new endGame(this,tryAgain);
@@ -620,7 +620,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             firstSelected = i;
                             }
                             else{
-                                if((board[firstSelected] != board[i]) || (firstSelected == i)){
+                                if((board[firstSelected] == "matched") || (board[i] == "matched")){
+                                    secondSelected = i;
+                                    resetTextSelect = true;
+                                    NumCorrMatch.setText(Integer.toString(correctTiles));
+                                    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                    NumClick.setText(Integer.toString(tries));
+                                }
+                                else if((board[firstSelected] != board[i]) || (firstSelected == i)){
                                     secondSelected = i;
                                     resetTextSelect = true;
                                     incorrectTiles++;
@@ -632,6 +639,7 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                                 else{
                                     if(board[i]== "💣" && board[firstSelected] == "💣"){
                                         dispose();
+                                        durationTime(false);
                                         tryAgain.show();
                                     }
                                     else{
@@ -645,7 +653,6 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                                     if(correctTiles == length - 1){
                                         playerWon();
                                     }
-                                    checkWinText();
                                     firstSelected = totalTiles;
                                     }
                                 }
@@ -663,7 +670,14 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
                             firstSelected = i;
                             }
                             else{
-                                if((board[firstSelected] != board[i]) || (firstSelected == i)){
+                                if((board[firstSelected] == "matched") || (board[i] == "matched")){
+                                    secondSelected = i;
+                                    resetTextSelect = true;
+                                    NumCorrMatch.setText(Integer.toString(correctTiles));
+                                    NumIncorrMatch.setText(Integer.toString(incorrectTiles));
+                                    NumClick.setText(Integer.toString(tries));
+                                }
+                                else if((board[firstSelected] != board[i]) || (firstSelected == i)){
                                     secondSelected = i;
                                     resetTextSelect = true;
                                     incorrectTiles++;
