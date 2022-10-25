@@ -452,6 +452,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
 
         Game.setText("Game");
 
+        NewGame.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        NewGame.setMnemonic('n');
         NewGame.setText("New Game");
         NewGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,6 +462,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         });
         Game.add(NewGame);
 
+        Quit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        Quit.setMnemonic('q');
         Quit.setText("Quit");
         Quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,6 +476,8 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
 
         Help.setText("Help");
 
+        Instruction.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        Instruction.setMnemonic('i');
         Instruction.setText("Instructions");
         Instruction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,7 +486,10 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
         });
         Help.add(Instruction);
 
+        About.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        About.setMnemonic('a');
         About.setText("About");
+        About.setToolTipText("");
         About.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AboutActionPerformed(evt);
@@ -504,7 +513,10 @@ public class MainGame extends javax.swing.JFrame implements MouseListener {
 
     private void QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitActionPerformed
         // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(null, "Do you want to quit the game?", "Exit Game",JOptionPane.YES_NO_OPTION);
+        if (result == 0){
         System.exit(0);
+        }
     }//GEN-LAST:event_QuitActionPerformed
 
     private void AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutActionPerformed

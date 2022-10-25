@@ -11,6 +11,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="NewGame">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+N"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="110"/>
                 <Property name="text" type="java.lang.String" value="New Game"/>
               </Properties>
               <Events>
@@ -19,6 +23,10 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Quit">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+Q"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="113"/>
                 <Property name="text" type="java.lang.String" value="Quit"/>
               </Properties>
               <Events>
@@ -34,6 +42,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Instruction">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+I"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="105"/>
                 <Property name="text" type="java.lang.String" value="Instructions"/>
               </Properties>
               <Events>
@@ -42,7 +54,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="About">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+A"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="97"/>
                 <Property name="text" type="java.lang.String" value="About"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AboutActionPerformed"/>
