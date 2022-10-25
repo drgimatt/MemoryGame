@@ -354,14 +354,6 @@ public class OptionsPage extends javax.swing.JFrame {
         gameDuration = 300000;        
     }//GEN-LAST:event_fiveMinItemStateChanged
     // TODO add your handling code here:
-
-    private void musicCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musicCBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_musicCBoxActionPerformed
-
-    private void musicItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_musicItemStateChanged
-      
-    }//GEN-LAST:event_musicItemStateChanged
     
     
     /**
